@@ -83,6 +83,12 @@ public class DrawShape {
 		contentStream.endText();
 	}
 
+	public void drawTextHorizontalCenter(float y, String text, int fontSize, PDType0Font font) throws IOException {
+		float textWidth = font.getStringWidth(text) / 1000 * fontSize;
+		float x = (pageWidth - textWidth) / 2;
+		drawText(x, y, text, fontSize, font);
+	}
+
 	/*
 	 * public void drawKrutiDevText(float x, float y, String text, int fontSize)
 	 * throws IOException { contentStream.setNonStrokingColor(Color.BLACK); // Set

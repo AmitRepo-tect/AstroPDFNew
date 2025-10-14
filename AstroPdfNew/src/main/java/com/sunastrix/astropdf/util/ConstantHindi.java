@@ -1,12 +1,17 @@
 package com.sunastrix.astropdf.util;
 
 public class ConstantHindi {
+	public String colon = "%";
 	public String degSymbol = "°";
 	public String minSymbol = "'";
 	public String secSymbol = "\"";
 	public String jeevanRatan = "thou jRu";
 	public String punyaRatan = "iq.; jRu";
 	public String bhagyaRatan = "HkkX; jRu";
+	public String year="o\"kZ";
+	public String month="eghuk";
+	public String day="fnu";
+	     
 	public String lagnaDesc = "Hkkjrh; T;ksfr\"k esa yXu dk cgqr egRoiw.kZ LFkku gSA O;fä ds tUe ds le; esa tks jkf'k iwohZ; f{krt ij mfnr gks jgh gksrh gS ml jkf'k dks yXu jkf'k dgrs gS yXu O;fä ds thou dh NksVh ls NksVh ?kVuk ds ckjs esa enn djrk gSA";
 
 	public String[] planetNameWithLagna = new String[] { "yXu", "lw;Z", "pUæ", "eaxy", "cq/k", "xq#", "'kqØ", "'kfu",
@@ -26,6 +31,8 @@ public class ConstantHindi {
 	public String[] monthShortName = { "tuojh", "Qjojh", "ekpZ", "vçSy", "ebZ", "twu", "tqykbZ", "vxLr", "flrEcj",
 			"vDVwcj", "uoacj", "fnlacj" };
 
+	public String[] monthName = { "January", "February", "March", "April", "May", "June", "July", "August", "September",
+			"October", "November", "December" };
 	public String[] praPlaName = { "lq", "p", "ea", "cq", "xq", "'kq", "'k", "y", ";ks" };
 //	public String[] rashiName = { "मेष", "वृष", "मिथुन", "कर्क", "सिंह", "कन्या", "तुला", "वृश्चिक", "धनु", "मकर", "कुंभ",
 //			"मीन" };
@@ -38,6 +45,7 @@ public class ConstantHindi {
 			"ewy", "iwokZ\"kk", "m0\"kkk", "Jo.k", "/kfu\"‍Bk", "'krfHk\"k", "iwokZHkkæin", "m0Hkkæin", "jsorh" };
 	public String[] rashiLordName = { "eaxy", "'kqØ", "cq/k", "pUæ", "lw;Z", "cq/k", "'kqØ", "eaxy", "xq#", "'kfu",
 			"'kfu", "xq#" };
+	public String[] nakshLord = { "dsrq", "'kqØZ", "lw;Z", "paæ", "eaxy", "jkgq", "xq:", "'kfu", "cq/k" };
 	public String[] nakshLordName = { "dsrq", "'kqØ", "lw;Z", "pUæ", "eaxy", "jkgq", "xq#", "'kfu", "cq/k", "dsrq",
 			"'kqØ", "lw;Z", "pUæ", "eaxy", "jkgq", "xq#", "'kfu", "cq/k", "dsrq", "'kqØ", "lw;Z", "pUæ", "eaxy", "jkgq",
 			"xq#", "'kfu", "cq/k" };
@@ -64,7 +72,7 @@ public class ConstantHindi {
 	public String[] plaNameShort = { "lw", "p", "ea", "cq", "xq", "'kq", "'k", "jk", "ds", ";w", "us", "Iyw", "y",
 			"y" };
 
-	public static String[] day = { "jfookj", "lkseokj", "eaxyokj", "cq/kokj", "xq:okj", "'kqØokj", "'kfuokj" };
+	public static String[] days = { "jfookj", "lkseokj", "eaxyokj", "cq/kokj", "xq:okj", "'kqØokj", "'kfuokj" };
 	public static String[] daylrd = { "lw;Z", "paæ", "eaxy", "cq/k", "xq:", "'kqØ", "'kfu" };
 	public static String[] ras = { "es\"k", "o`\"kHk", "feFkqu", "ddZ", "flag", "dU;k", "rqyk", "o`f'pd", "/kuq", "edj",
 			"dqaHk", "ehu" };
@@ -128,5 +136,11 @@ public class ConstantHindi {
 	public static String[] cusperInterLinksHeading = { "Hkko", "ç&1", "ç&2", "ç&3", "ç&4" };
 	public static String[] cusperInterLinksSubHeading = { "xzg", "u{k=", "lc", "lc lc", "fLFkfr" };
 	public static String[] gemstoneLabel = { "jRu", "vaxqyh", "/kkrq", "U;wure otu", "ea=", "nsork" };
+
+	public static String[] shodasChartHeading = { "yXu pkVZ", "gksjk & ¼/ku lEifr½", "æs\"dk.k & ¼HkkbZ cgu½",
+			"prqFkkaZ'k &¼HkkX;½", "lIreka'k &¼cPps½", "uoeka'k&¼ifr iRuh½", "n'keka'k&¼O;olk;½",
+			"}kn'kka'k &¼ekrk firk½", "\"kksM'kka'k &¼okgu½", "fo'kka'k¼/kkfeZd :fp½", "lIrfoa'kka'k &¼cy½",
+			"prqfoaZ'kka'k&¼f'k{kk½", "f='kka'k &¼nqHkkZX;½", "[kosnka'k&¼'kqHk Qy½", "v{kosnka'k&¼lkekU; thou½",
+			"\"k\"Vîa'k&¼lkekU; thou½" };
 
 }

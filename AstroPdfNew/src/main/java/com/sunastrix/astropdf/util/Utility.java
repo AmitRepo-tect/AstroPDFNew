@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 public class Utility extends SUtil implements Serializable {
 	protected String languageCode = "0";
+	ConstantHindi constantHindi=new ConstantHindi();
 
 	public static int[] removeValueFromIntArray(int valueToRemove, int[] array) {
 
@@ -229,5 +230,8 @@ public class Utility extends SUtil implements Serializable {
 			var1 = "+";
 		}
 		return var1;
+	}
+	public String getFormattedTime(int[] arr){
+		return arr[0]+constantHindi.colon+arr[1]+constantHindi.colon+arr[2];
 	}
 }

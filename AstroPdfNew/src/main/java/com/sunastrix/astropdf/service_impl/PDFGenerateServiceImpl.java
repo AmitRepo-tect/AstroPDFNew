@@ -58,10 +58,8 @@ import com.sunastrix.astropdf.model.YoginiDashaModel;
 import com.sunastrix.astropdf.service.PDFGenerateService;
 import com.sunastrix.astropdf.util.AxisPoint;
 import com.sunastrix.astropdf.util.ConstantHindi;
-import com.sunastrix.astropdf.util.ConstantKHindi;
 import com.sunastrix.astropdf.util.DrawShape;
-
-import de.rototor.pdfbox.graphics2d.PdfBoxGraphics2D;
+import com.sunastrix.astropdf.util.Utility;
 
 @Service
 public class PDFGenerateServiceImpl implements PDFGenerateService {
@@ -79,6 +77,8 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 	PDRectangle mediaBox;
 	DrawShape drawShape = new DrawShape();
 	ArrayList<PrastharashtakvargaModel> prashtakVargaList;
+	int pageNumber = 1;
+	Utility utility;
 
 	public byte[] generatePDF(BirthDetailBean birthDetailBean) throws IOException {
 		document = new PDDocument();
@@ -95,6 +95,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 		this.birthDetailBean = birthDetailBean;
 		desktopHoro = getDesktopHoro(birthDetailBean);
 		constantHindi = new ConstantHindi();
+		utility = new Utility();
 		printCoverPage();
 		printFirstPage();
 		printSecondPage();
@@ -157,13 +158,17 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 
 	void addPageHeading(float pageHeight, float pageWidth) throws Exception {
 		drawShape.drawLine(0, pageHeight - 30, pageWidth, pageHeight - 30);
-		drawShape.drawText(pageWidth / 2 - 30, pageHeight - 20, "Astro Ganit", 12, poppinsRegularFont);
+		drawShape.drawText(20, pageHeight - 20, "" + pageNumber, 12, poppinsRegularFont);
+		drawShape.drawTextHorizontalCenter(pageHeight - 20, "Astro Ganit", 12, poppinsRegularFont);
+		drawShape.drawText(pageWidth - 150, pageHeight - 20, "www.astroganit.com", 12, poppinsRegularFont);
+		pageNumber++;
 	}
 
 	void printText(DrawShape drawShape, float x, float pageHeight, String[] values, PDType0Font font) {
 		float y = pageHeight;
 		for (int i = 0; i < values.length; i++) {
 			try {
+
 				drawShape.drawText(x, y, values[i], 14, font);
 				y = y - 30;
 			} catch (IOException e) {
@@ -192,6 +197,22 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 			pageWidth = mediaBox.getWidth();
 			pageHeight = mediaBox.getHeight();
 			drawShape.initialize(pageHeight, pageWidth, document, contentStream);
+			String text = ",LVªksxf.kr T;ksfr\"k fjiksVZ"; // Kruti Dev text
+			float y = pageHeight - 120;
+			drawShape.drawTextHorizontalCenter(y, text, 30, krutiDevRegularFont);
+			text = "vkidh tUedqaMyh vkSj xzg fLFkfr dk laiw.kZ fo'ys\"k.k";
+			y = pageHeight - 150;
+			drawShape.drawTextHorizontalCenter(y, text, 20, krutiDevRegularFont);
+			text = "Horoscope By"; // Kruti Dev text
+			y = pageHeight - 670;
+			drawShape.drawTextHorizontalCenter(y, text, 12, poppinsRegularFont);
+			text = "AstroGanit.com ";
+			y = pageHeight - 690;
+			drawShape.drawTextHorizontalCenter(y, text, 16, poppinsRegularFont);
+			text = "SunAstrix Soft Pvt Ltd";
+			y = pageHeight - 710;
+			drawShape.drawTextHorizontalCenter(y, text, 12, poppinsRegularFont);
+
 			drawShape.drawImage();
 			contentStream.close();
 		} catch (Exception e) {
@@ -325,6 +346,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 			drawShape.initialize(pageHeight, pageWidth, document, contentStream);
 			addWatermarkUnderContent(document, page);
 			addPageHeading(pageHeight, pageWidth);
+			drawShape.drawText(20, pageHeight - 50, ";ksfxuh n'kk", 16, krutiDevRegularFont);
 			ArrayList<YoginiDashaModel> dataList = getYoginiDashaData();
 			printYoginiDasha1(dataList.get(0));
 			printYoginiDasha2(dataList.get(1));
@@ -351,6 +373,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 			drawShape.initialize(pageHeight, pageWidth, document, contentStream);
 			addWatermarkUnderContent(document, page);
 			addPageHeading(pageHeight, pageWidth);
+			String[] chartHeading = constantHindi.shodasChartHeading;
 			ArrayList<ChartDetailModel> arrayList = new ArrayList<ChartDetailModel>();
 			arrayList.add(new ChartDetailModel(20f, pageHeight - 230f,
 					getIntArray(desktopHoro.getPositionForShodasvarg(0), 0)));
@@ -380,7 +403,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 			for (int i = 0; i < arrayList.size(); i++) {
 				chartDetailModel = arrayList.get(i);
 				printChart(chartDetailModel.getStartX(), chartDetailModel.getStartY(),
-						chartDetailModel.getPlanetArray());
+						chartDetailModel.getPlanetArray(), chartHeading[i]);
 			}
 
 			contentStream.close();
@@ -400,6 +423,8 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 			drawShape.initialize(pageHeight, pageWidth, document, contentStream);
 			addWatermarkUnderContent(document, page);
 			addPageHeading(pageHeight, pageWidth);
+			int chartNumber = 12;
+			String[] chartHeading = constantHindi.shodasChartHeading;
 			ArrayList<ChartDetailModel> arrayList = new ArrayList<ChartDetailModel>();
 			arrayList.add(new ChartDetailModel(20f, pageHeight - 230f,
 					getIntArray(desktopHoro.getPositionForShodasvarg(12), 0)));
@@ -413,7 +438,8 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 			for (int i = 0; i < arrayList.size(); i++) {
 				chartDetailModel = arrayList.get(i);
 				printChart(chartDetailModel.getStartX(), chartDetailModel.getStartY(),
-						chartDetailModel.getPlanetArray());
+						chartDetailModel.getPlanetArray(), chartHeading[chartNumber]);
+				chartNumber++;
 			}
 			printShodasTable();
 			printShodasBhavTable();
@@ -612,12 +638,12 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 		String[] values = { desktopHoro.getName(), getBirthDate(), desktopHoro.getBirthTime(), desktopHoro.getPlace(),
 				String.valueOf(desktopHoro.getAyan()) };
 		printText(drawShape, x + 5, pageHeight - 80, labels, krutiDevRegularFont);
-		printText(drawShape, x + (w / 2) + 5, pageHeight - 80, values, krutiDevRegularFont);
+		printText(drawShape, x + (w / 2) + 5, pageHeight - 80, values, notoSerifDevanagariRegularFont);
 	}
 
 	String getBirthDate() {
 		int[] arr = desktopHoro.getBirthDate();
-		return arr[0] + " " + constantHindi.monthShortName[arr[1]] + ", " + arr[2];
+		return arr[0] + "-" + constantHindi.monthName[arr[1]] + "-" + arr[2];
 	}
 
 	void printPanchang(float pageHeight, float pageWidth) {
@@ -637,7 +663,8 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 			printText(drawShape, x + 5, pageHeight - 260, panchangLabels, krutiDevRegularFont);
 			String[] values = { desktopHoro.getPakshaName(), desktopHoro.getTithiName(), desktopHoro.getNakshatraName(),
 					desktopHoro.getHinduWeekdayName(), desktopHoro.getHinduWeekdayName(), desktopHoro.getYoganame(),
-					desktopHoro.getKaranName(), desktopHoro.getSunRiseTimeHms(), desktopHoro.getSunSetTimeHms() };
+					desktopHoro.getKaranName(), utility.getFormattedTime(desktopHoro.getSunRiseTimeIntArr()),
+					utility.getFormattedTime(desktopHoro.getSunSetTimeIntArr()) };
 
 			printText(drawShape, x + (w / 2) + 5, pageHeight - 260, values, krutiDevRegularFont);
 
@@ -656,21 +683,21 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 			drawShape.drawRoundedRectangle(x, y, h, w);
 			drawShape.drawRowAndColoum(x, y, h, w, 19, 30);
 			ArrayList<AxisPoint> points = new ArrayList<AxisPoint>();
-			points.add(new AxisPoint(x + w / 2, y, x + w / 2, y + h));
+			points.add(new AxisPoint(x + w / 2 - 10, y, x + w / 2 - 10, y + h));
 			drawShape.drawColumn(points);
 			String[] panchangLabels = constantHindi.avakahadaChakarLabel;
 			printText(drawShape, x + 5, pageHeight - 80, panchangLabels, krutiDevRegularFont);
 			System.out.println("Balance" + desktopHoro.getBalanceOfDasha());
 			String[] values = { desktopHoro.getPayaName(), desktopHoro.getVarnaName(), desktopHoro.getYoniName(),
 					desktopHoro.getGanaName(), desktopHoro.getVasyaName(), desktopHoro.getNadiName(),
-					/* desktopHoro.getBalanceOfDasha() */"", desktopHoro.getLagnaSign(), desktopHoro.getLagnaLordName(),
-					desktopHoro.getRasiName(), desktopHoro.getRasiLordName(), desktopHoro.getNakshatraName(),
-					desktopHoro.getNakshatraLordName(), desktopHoro.getJulianDayValue(),
+					getBalanceOfDasha(desktopHoro.getBalanceOfDashaIntArr()), desktopHoro.getLagnaSign(),
+					desktopHoro.getLagnaLordName(), desktopHoro.getRasiName(), desktopHoro.getRasiLordName(),
+					desktopHoro.getNakshatraName(), desktopHoro.getNakshatraLordName(), desktopHoro.getJulianDayValue(),
 					desktopHoro.getIndianSunSignName(), desktopHoro.getSunSignName(),
 					"" + desktopHoro.getAyanamsaDms(birthDetailBean.getLanguageCode()),
 					"" + desktopHoro.getAyanamsaType(), desktopHoro.getObliquityDms(birthDetailBean.getLanguageCode()),
-					desktopHoro.getSiderealTimeHms() };
-			printText(drawShape, x + (w / 2) + 5, pageHeight - 80, values, krutiDevRegularFont);
+					utility.getFormattedTime(desktopHoro.getSiderealTimeIntArr()) };
+			printText(drawShape, x + (w / 2) + 5 - 10, pageHeight - 80, values, krutiDevRegularFont);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -1254,7 +1281,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 	}
 
 	void printYoginiDasha1(YoginiDashaModel yoginiDashaModel) throws IOException {
-		// drawShape.drawKrutiDevText(20, pageHeight - 50, "tUe fooj.k", 12);
+
 		float x = 20;
 		float y = pageHeight - 222;
 		float h = 162;
@@ -1272,7 +1299,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 	}
 
 	void printYoginiDasha2(YoginiDashaModel yoginiDashaModel) throws IOException {
-		// drawShape.drawKrutiDevText(307, pageHeight - 50, "tUe fooj.k", 12);
+
 		float x = 307;
 		float y = pageHeight - 222;
 		float h = 162;
@@ -1289,7 +1316,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 	}
 
 	void printYoginiDasha3(YoginiDashaModel yoginiDashaModel) throws IOException {
-		// drawShape.drawKrutiDevText(20, pageHeight - 242, "tUe fooj.k", 12);
+
 		float x = 20;
 		float y = pageHeight - 414;
 		float h = 162;
@@ -1302,12 +1329,12 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 		points.add(new AxisPoint(x + 67, y, x + 67, y + 144));
 		points.add(new AxisPoint(x + 167, y, x + 167, y + 144));
 		drawShape.drawColumn(points);
-		drawShape.drawText(x, pageHeight - 50, "tUe fooj.k", 12, krutiDevRegularFont);
+
 		populateYoginiDashaData(x, y + 144, yoginiDashaModel);
 	}
 
 	void printYoginiDasha4(YoginiDashaModel yoginiDashaModel) throws IOException {
-		// drawShape.drawKrutiDevText(307, pageHeight - 242, "tUe fooj.k", 12);
+
 		float x = 307;
 		float y = pageHeight - 414;
 		float h = 162;
@@ -1324,7 +1351,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 	}
 
 	void printYoginiDasha5(YoginiDashaModel yoginiDashaModel) throws IOException {
-		// drawShape.drawKrutiDevText(20, pageHeight - 434, "tUe fooj.k", 12);
+
 		float x = 20;
 		float y = pageHeight - 606;
 		float h = 162;
@@ -1337,12 +1364,10 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 		points.add(new AxisPoint(x + 67, y, x + 67, y + 144));
 		points.add(new AxisPoint(x + 167, y, x + 167, y + 144));
 		drawShape.drawColumn(points);
-		drawShape.drawText(x, pageHeight - 50, "tUe fooj.k", 12, krutiDevRegularFont);
 		populateYoginiDashaData(x, y + 144, yoginiDashaModel);
 	}
 
 	void printYoginiDasha6(YoginiDashaModel yoginiDashaModel) throws IOException {
-		// drawShape.drawKrutiDevText(307, pageHeight - 434, "tUe fooj.k", 12);
 		float x = 307;
 		float y = pageHeight - 606;
 		float h = 162;
@@ -1359,7 +1384,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 	}
 
 	void printYoginiDasha7(YoginiDashaModel yoginiDashaModel) throws IOException {
-		// drawShape.drawKrutiDevText(20, pageHeight - 626, "tUe fooj.k", 12);
+
 		float x = 20;
 		float y = pageHeight - 798;
 		float h = 162;
@@ -1372,12 +1397,11 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 		points.add(new AxisPoint(x + 67, y, x + 67, y + 144));
 		points.add(new AxisPoint(x + 167, y, x + 167, y + 144));
 		drawShape.drawColumn(points);
-		drawShape.drawText(x, pageHeight - 50, "tUe fooj.k", 12, krutiDevRegularFont);
 		populateYoginiDashaData(x, y + 144, yoginiDashaModel);
 	}
 
 	void printYoginiDasha8(YoginiDashaModel yoginiDashaModel) throws IOException {
-		// drawShape.drawKrutiDevText(307, pageHeight - 626, "tUe fooj.k", 12);
+
 		float x = 307;
 		float y = pageHeight - 798;
 		float h = 162;
@@ -1409,13 +1433,13 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 	}
 
 	void printShodasTable() throws IOException {
-		drawShape.drawText(10, pageHeight - 450, "'kfu ", 16, krutiDevRegularFont);
+		drawShape.drawText(10, pageHeight - 450, "'kksM\"koxZ rkfydk", 16, krutiDevRegularFont);
 		float x = 13;
 		float y = pageHeight - 800;
 		float h = 360;
 		float w = 282;
 		drawShape.drawRoundedRectangle(13, pageHeight - 800, 340, 275);
-		drawShape.drawRowAndColoum(13, pageHeight - 800, 340, 275, 17, 20);
+		drawShape.drawRowAndColoum(13, pageHeight - 800, 340, 275, 16, 20);
 		ArrayList<AxisPoint> points = new ArrayList<AxisPoint>();
 		points.add(new AxisPoint(x + 25, y, x + 25, y + 340));
 		points.add(new AxisPoint(x + 50, y, x + 50, y + 340));
@@ -1434,7 +1458,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 	}
 
 	void printShodasBhavTable() throws IOException {
-		drawShape.drawText(302, pageHeight - 450, "paæ", 16, krutiDevRegularFont);
+		drawShape.drawText(302, pageHeight - 450, "'kksM\"koxZ Hkko rkfydk", 16, krutiDevRegularFont);
 		float x = 307;
 		float y = pageHeight - 800;
 		float h = 340;
@@ -1459,8 +1483,8 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 		populateShodasBhavTable(xaxis, y + 320);
 	}
 
-	void printChart(float startX, float startY, int[] planetArray) throws IOException {
-		drawShape.drawText(startX, startY + 180, "yXu pkVZ", 16, krutiDevRegularFont);
+	void printChart(float startX, float startY, int[] planetArray, String heading) throws IOException {
+		drawShape.drawText(startX, startY + 180, heading, 16, krutiDevRegularFont);
 		drawShape.drawKundli(pageHeight, pageWidth, startX, startY);
 		float[] x = { startX + 80, startX + 38, startX + 26, startX + 70, startX + 26, startX + 38, startX + 80,
 				startX + 124, startX + 136, startX + 95, startX + 136, startX + 124 };
@@ -2265,7 +2289,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 	void printVrashfalChart() throws IOException {
 		float startX = 212f;
 		float startY = pageHeight - 230f;
-		drawShape.drawText(startX, pageHeight - 50, "yXu pkVZ", 16, krutiDevRegularFont);
+		drawShape.drawText(startX, pageHeight - 50, "rkftd o\"kZQy dqaMyh", 16, krutiDevRegularFont);
 		drawShape.drawKundli(pageHeight, pageWidth, startX, startY);
 		float[] x = { startX + 80, startX + 38, startX + 26, startX + 70, startX + 26, startX + 38, startX + 80,
 				startX + 124, startX + 136, startX + 95, startX + 136, startX + 124 };
@@ -2326,7 +2350,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 		String[] values = { desktopHoro.getName(), getBirthDate(), desktopHoro.getBirthTime(), desktopHoro.getPlace(),
 				String.valueOf(desktopHoro.getAyan()) };
 		printText(drawShape, x + 5, pageHeight - 280, labels, krutiDevRegularFont);
-		printText(drawShape, x + (w / 2) + 5, pageHeight - 280, values, krutiDevRegularFont);
+		printText(drawShape, x + (w / 2) + 5, pageHeight - 280, values, poppinsRegularFont);
 	}
 
 	void printVrashfalPridiction() throws Exception {
@@ -2400,7 +2424,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 		String lagna = lagnaCalculation.getLagna();
 		PersonalityPrediction personalityPrediction = lagnaCalculation.getLagnaReport();
 		float startY = pageHeight - 50;
-		drawShape.drawText(20, startY, "vkidk yXu gS% " + lagna, 16, krutiDevRegularFont);
+		drawShape.drawText(20, startY, "vkidk yXu gS%" + lagna, 16, krutiDevRegularFont);
 		contentStream.setFont(krutiDevRegularFont, 12);
 		float y = addParagraph(startY - 20, constantHindi.lagnaDesc);
 		String[] heading = { "LokLFk; # yXu ds fy,".replace("#", lagna),
@@ -2419,4 +2443,8 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 
 	}
 
+	String getBalanceOfDasha(int[] arr) {
+		return constantHindi.nakshLord[arr[0]] + " " + arr[1] + " " + constantHindi.year + " " + arr[2] + " "
+				+ constantHindi.month + " " + arr[3] + " " + constantHindi.day;
+	}
 }
