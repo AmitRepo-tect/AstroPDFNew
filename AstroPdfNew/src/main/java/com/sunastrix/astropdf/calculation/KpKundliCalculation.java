@@ -43,7 +43,7 @@ public class KpKundliCalculation {
 			degree[i] = tempCalculation;
 			str = str + degree[i] + ", ";
 		}
-		// degree[12] = planetDegree[0];
+		//degree[12] = planetDegree[0];
 		return degree;
 	}
 

@@ -1,6 +1,7 @@
 package com.sunastrix.astropdf.calculation;
 
 import java.io.File;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,22 +19,22 @@ public class LagnaCalculation {
 	}
 
 	public PersonalityPrediction getLagnaReport() {
-		int lagna = desktopHoro.getPositionForShodasvarg(0)[0];
+		int lagna = (int) (desktopHoro.getAsc() / 30.00);
 		ArrayList<PersonalityPrediction> list = getList();
 		return list.get(lagna);
 	}
 
 	public String getLagna() {
 		ConstantHindi constantHindi = new ConstantHindi();
-		int lagna = desktopHoro.getPositionForShodasvarg(0)[0];
+		int lagna = (int) (desktopHoro.getAsc() / 30.00);
 		return constantHindi.rashiName[lagna];
 	}
 
 	ArrayList<PersonalityPrediction> getList() {
 		try {
 			ObjectMapper mapper = new ObjectMapper();
-			List<PersonalityPrediction> list = mapper.readValue(
-					new File("src/main/resources/json/lagna_prediction" + ".json"),
+			InputStream inputStream = getClass().getResourceAsStream("/json/lagna_prediction.json");
+			List<PersonalityPrediction> list = mapper.readValue(inputStream,
 					new TypeReference<List<PersonalityPrediction>>() {
 					});
 
@@ -44,19 +45,5 @@ public class LagnaCalculation {
 			throw new RuntimeException("Failed to read muhurat data", e);
 		}
 	}
-	/*
-	 * ArrayList<PersonalityPrediction> getList() { try { ObjectMapper mapper = new
-	 * ObjectMapper();
-	 * mapper.configure(com.fasterxml.jackson.databind.MapperFeature.
-	 * ACCEPT_CASE_INSENSITIVE_PROPERTIES, true);
-	 * 
-	 * List<PersonalityPrediction> list = mapper.readValue( new
-	 * File("src/main/resources/json/gemstone_report.json"), new
-	 * TypeReference<List<PersonalityPrediction>>() { });
-	 * 
-	 * return new ArrayList<>(list);
-	 * 
-	 * } catch (Exception e) { e.printStackTrace(); throw new
-	 * RuntimeException("Failed to read muhurat data", e); } }
-	 */
+
 }

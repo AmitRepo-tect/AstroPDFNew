@@ -58,11 +58,14 @@ public class VarshfalCalculation {
 				getPlanetForVarshfal(getVarshfalBirthDetail(yearNo, birthDetailBean, varshfalYear)));
 		double[] planetDegArray = getPlanetForVarshfal(birthDetailBean);
 		int lagnaRashi = getRasiNumber(planetDegArray[0]) + 1;
+		System.out.println("lagnaRashi-" + lagnaRashi + "   " + yearNo);
 		int lagna = planetRashiArray[12];
+		System.out.println("lagna-" + lagna);
 		int munthaRashi = (lagnaRashi + yearNo) % 12;
 		if (munthaRashi == 0) {
 			munthaRashi = 12;
 		}
+		System.out.println("munthaRashi-" + munthaRashi);
 		int munthaBhav = 1;
 		while (lagna != munthaRashi) {
 			lagna++;
@@ -78,10 +81,9 @@ public class VarshfalCalculation {
 		MunthaDesc munthaDesc = null;
 		try {
 			ObjectMapper mapper = new ObjectMapper();
-			List<MunthaDesc> munthaList = mapper.readValue(
-					new File("src/main/resources/json/varshfal_muntha_bhav_desc.json"),
-					new TypeReference<List<MunthaDesc>>() {
-					});
+			InputStream inputStream = getClass().getResourceAsStream("/json/varshfal_muntha_bhav_desc.json");
+			List<MunthaDesc> munthaList = mapper.readValue(inputStream, new TypeReference<List<MunthaDesc>>() {
+			});
 			munthaDesc = munthaList.get(munth);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -300,8 +302,7 @@ public class VarshfalCalculation {
 			var1 = calendar.get(1);
 			var5 = calendar.get(2) /* + 1 */;
 			var6 = calendar.get(5);
-			var7 = Utility.makelength(String.valueOf(var6), 2) + " " +monthNames[var5]
-					+ "] " + var1;
+			var7 = Utility.makelength(String.valueOf(var6), 2) + " " + monthNames[var5] + "] " + var1;
 			var2[var3] = var7;
 			++var3;
 			++var4;
@@ -314,8 +315,7 @@ public class VarshfalCalculation {
 				var1 = calendar.get(1);
 				var5 = calendar.get(2) /* + 1 */;
 				var6 = calendar.get(5);
-				var7 = Utility.makelength(String.valueOf(var6), 2) + " " + monthNames[var5]
-						+ "] " + var1;
+				var7 = Utility.makelength(String.valueOf(var6), 2) + " " + monthNames[var5] + "] " + var1;
 				var2[var3] = var7;
 				++var3;
 				++var4;
@@ -325,8 +325,9 @@ public class VarshfalCalculation {
 	}
 
 	long calculateJdForVarshphal(BirthDetailBean birthDetailBean, int varshfalYear) {
+		System.out.println("Input" + varshfalYear);
 		DateTimeBean dateTimeBean = birthDetailBean.getDateTimeBean();
-		int var1 = (int) Integer.parseInt(dateTimeBean.getMonth());
+		int var1 = (int) Integer.parseInt(dateTimeBean.getMonth()) + 1;
 		int var2 = Integer.parseInt(dateTimeBean.getYear())
 				+ Math.abs(varshfalYear - Integer.parseInt(dateTimeBean.getYear()));
 		if (var1 < 3) {
@@ -336,10 +337,12 @@ public class VarshfalCalculation {
 		int var3 = var2 / 100;
 
 		var1 = (int) (30.6f * (float) (var1 + 1));
+		System.out.println("Input" + var1 + "--" + var2 + "--" + var3);
 		return (long) (var2 * 365 + var2 / 4 + var1 + 2 - var3 + var3 / 4 + Integer.parseInt(dateTimeBean.getDay()));
 	}
 
 	int[] getVarshphal(BirthDetailBean birthDetailBean, int varYear, long varjd) {
+		System.out.println("Vrashfal Detail input" + varYear + "-" + varjd);
 		DateTimeBean dateTimeBean = birthDetailBean.getDateTimeBean();
 		var j = julianDate(Integer.parseInt(dateTimeBean.getDay()), Integer.parseInt(dateTimeBean.getMonth()) + 1,
 				Integer.parseInt(dateTimeBean.getYear()));
@@ -392,6 +395,7 @@ public class VarshfalCalculation {
 				+ Math.abs(varYear - Integer.parseInt(dateTimeBean.getYear()));
 		int month = Integer.parseInt(dateTimeBean.getMonth()) + 1;
 		int[] arr = { year, month, day, hr, min, sec };
+		System.out.println("Vrashfal Detail" + day + "-" + month + "-" + year + "-" + hr + "-" + min + "-" + sec);
 		return arr;
 	}
 
@@ -414,22 +418,23 @@ public class VarshfalCalculation {
 
 	private ArrayList<ArrayList<Prediction>> getDashaResultArray() {
 		ArrayList<ArrayList<Prediction>> arrayList = new ArrayList<ArrayList<Prediction>>();
-		arrayList.add(getList("src/main/resources/json/varshfal_prediction_ketu_new" + ".json"));
-		arrayList.add(getList("src/main/resources/json/varshfal_prediction_venus_new" + ".json"));
-		arrayList.add(getList("src/main/resources/json/varshfal_prediction_sun_new" + ".json"));
-		arrayList.add(getList("src/main/resources/json/varshfal_prediction_moon_new" + ".json"));
-		arrayList.add(getList("src/main/resources/json/varshfal_prediction_mars_new" + ".json"));
-		arrayList.add(getList("src/main/resources/json/varshfal_prediction_rahu_new" + ".json"));
-		arrayList.add(getList("src/main/resources/json/varshfal_prediction_jupiter_new" + ".json"));
-		arrayList.add(getList("src/main/resources/json/varshfal_prediction_saturn_new" + ".json"));
-		arrayList.add(getList("src/main/resources/json/varshfal_prediction_mercury_new" + ".json"));
+		arrayList.add(getList("/json/varshfal_prediction_ketu_new" + ".json"));
+		arrayList.add(getList("/json/varshfal_prediction_venus_new" + ".json"));
+		arrayList.add(getList("/json/varshfal_prediction_sun_new" + ".json"));
+		arrayList.add(getList("/json/varshfal_prediction_moon_new" + ".json"));
+		arrayList.add(getList("/json/varshfal_prediction_mars_new" + ".json"));
+		arrayList.add(getList("/json/varshfal_prediction_rahu_new" + ".json"));
+		arrayList.add(getList("/json/varshfal_prediction_jupiter_new" + ".json"));
+		arrayList.add(getList("/json/varshfal_prediction_saturn_new" + ".json"));
+		arrayList.add(getList("/json/varshfal_prediction_mercury_new" + ".json"));
 		return arrayList;
 	}
 
 	ArrayList<Prediction> getList(String path) {
 		try {
 			ObjectMapper mapper = new ObjectMapper();
-			List<Prediction> list = mapper.readValue(new File(path), new TypeReference<List<Prediction>>() {
+			InputStream inputStream = getClass().getResourceAsStream(path);
+			List<Prediction> list = mapper.readValue(inputStream, new TypeReference<List<Prediction>>() {
 			});
 
 			ArrayList<Prediction> arrayList = new ArrayList<>(list);
@@ -446,6 +451,7 @@ public class VarshfalCalculation {
 		}
 
 		long intJD = (int) calculateJdForVarshphal(birthDetailBean, varshfalYear);
+		System.out.println("Intjd" + intJD);
 		int[] arrVarshPhal = getVarshphal(birthDetailBean, varshfalYear, (long) intJD);
 		DateTimeBean dateTimeBean = new DateTimeBean(String.valueOf(arrVarshPhal[2]),
 				String.valueOf(arrVarshPhal[1] - 1), String.valueOf(arrVarshPhal[0]), String.valueOf(arrVarshPhal[3]),

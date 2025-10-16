@@ -1,11 +1,12 @@
 package com.sunastrix.astropdf.service_impl;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
@@ -18,7 +19,6 @@ import org.springframework.stereotype.Service;
 
 import com.sunastrix.astroganitlib.horo.DesktopHoroNew;
 import com.sunastrix.astroganitlib.model.BirthDetailBean;
-import com.sunastrix.astroganitlib.model.DateTimeBean;
 import com.sunastrix.astropdf.calculation.AshtakVargaCalculation;
 import com.sunastrix.astropdf.calculation.ChalitCalculation;
 import com.sunastrix.astropdf.calculation.GemstoneCalculation;
@@ -65,9 +65,7 @@ import com.sunastrix.astropdf.util.Utility;
 public class PDFGenerateServiceImpl implements PDFGenerateService {
 	DesktopHoroNew desktopHoro;
 	BirthDetailBean birthDetailBean;
-	PDDocument document;
 	PDPageContentStream contentStream;
-	ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
 	public PDType0Font poppinsRegularFont;
 	public PDType0Font krutiDevRegularFont;
 	public PDType0Font notoSerifDevanagariRegularFont;
@@ -77,17 +75,23 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 	PDRectangle mediaBox;
 	DrawShape drawShape = new DrawShape();
 	ArrayList<PrastharashtakvargaModel> prashtakVargaList;
-	int pageNumber = 1;
+	int pageNumber;
 	Utility utility;
 
 	public byte[] generatePDF(BirthDetailBean birthDetailBean) throws IOException {
-		document = new PDDocument();
+		PDDocument document = new PDDocument();
+		ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+		pageNumber = 1;
 		try {
-			poppinsRegularFont = PDType0Font.load(document, new File("src/main/resources/fonts/poppins_regular.ttf"));
-			krutiDevRegularFont = PDType0Font.load(document,
-					new File("src/main/resources/fonts/Kruti-Dev-Regular.ttf"));
-			notoSerifDevanagariRegularFont = PDType0Font.load(document,
-					new File("src/main/resources/fonts/NotoSerifDevanagari-Regular.ttf"));
+			InputStream fontStream1 = getClass().getResourceAsStream("/fonts/poppins_regular.ttf");
+			InputStream fontStream2 = getClass().getResourceAsStream("/fonts/Kruti-Dev-Regular.ttf");
+			InputStream fontStream3 = getClass().getResourceAsStream("/fonts/NotoSerifDevanagari-Regular.ttf");
+			if (fontStream1 == null || fontStream2 == null || fontStream3 == null) {
+				throw new IOException("Font resource not found in classpath: /fonts/poppins_regular.ttf");
+			}
+			poppinsRegularFont = PDType0Font.load(document, fontStream1);
+			krutiDevRegularFont = PDType0Font.load(document, fontStream2);
+			notoSerifDevanagariRegularFont = PDType0Font.load(document, fontStream3);
 
 		} catch (Exception e) {
 			System.out.println("font " + e.getMessage());
@@ -96,21 +100,21 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 		desktopHoro = getDesktopHoro(birthDetailBean);
 		constantHindi = new ConstantHindi();
 		utility = new Utility();
-		printCoverPage();
-		printFirstPage();
-		printSecondPage();
-		printThirdPage();
-		printForthPage();
-		printFifthPage();
-		printSixthPage();
-		printSeventhPage();
-		printEigthPage();
-		printNinthPage();
-		printTenthPage();
-		printeleventhPage();
-		printTwelvethPage();
-		printThirteenPage();
-		printForteenPage();
+		printCoverPage(document);
+		printFirstPage(document);
+		printSecondPage(document);
+		printThirdPage(document);
+		printForthPage(document);
+		printFifthPage(document);
+		printSixthPage(document);
+		printSeventhPage(document);
+		printEigthPage(document);
+		printNinthPage(document);
+		printTenthPage(document);
+		printeleventhPage(document);
+		printTwelvethPage(document);
+		printThirteenPage(document);
+		printForteenPage(document);
 		document.save(byteArrayOutputStream);
 		return byteArrayOutputStream.toByteArray();
 	};
@@ -169,7 +173,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 		for (int i = 0; i < values.length; i++) {
 			try {
 
-				drawShape.drawText(x, y, values[i], 14, font);
+				drawShape.drawText(x, y, values[i], 16, font);
 				y = y - 30;
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
@@ -185,7 +189,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 		}
 	}
 
-	void printCoverPage() {
+	void printCoverPage(PDDocument document) {
 		try {
 			PDPage page = new PDPage(PDRectangle.A4);
 			document.addPage(page);
@@ -199,6 +203,8 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 			drawShape.initialize(pageHeight, pageWidth, document, contentStream);
 			String text = ",LVªksxf.kr T;ksfr\"k fjiksVZ"; // Kruti Dev text
 			float y = pageHeight - 120;
+			drawShape.drawTextHorizontalCenter(y, text, 30, krutiDevRegularFont);
+			drawShape.drawTextHorizontalCenter(y, text, 30, krutiDevRegularFont);
 			drawShape.drawTextHorizontalCenter(y, text, 30, krutiDevRegularFont);
 			text = "vkidh tUedqaMyh vkSj xzg fLFkfr dk laiw.kZ fo'ys\"k.k";
 			y = pageHeight - 150;
@@ -220,7 +226,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 		}
 	}
 
-	void printFirstPage() {
+	void printFirstPage(PDDocument document) {
 		try {
 			PDPage page = new PDPage(PDRectangle.A4);
 			document.addPage(page);
@@ -245,7 +251,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 		}
 	}
 
-	void printSecondPage() {
+	void printSecondPage(PDDocument document) {
 		try {
 			PDPage page = new PDPage(PDRectangle.A4);
 			document.addPage(page);
@@ -269,7 +275,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 
 	}
 
-	void printThirdPage() {
+	void printThirdPage(PDDocument document) {
 		try {
 			PDPage page = new PDPage(PDRectangle.A4);
 			document.addPage(page);
@@ -292,7 +298,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 		}
 	}
 
-	void printForthPage() {
+	void printForthPage(PDDocument document) {
 		try {
 			PDPage page = new PDPage(PDRectangle.A4);
 			document.addPage(page);
@@ -316,7 +322,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 		}
 	}
 
-	void printFifthPage() {
+	void printFifthPage(PDDocument document) {
 		try {
 			PDPage page = new PDPage(PDRectangle.A4);
 			document.addPage(page);
@@ -335,7 +341,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 		}
 	}
 
-	void printSixthPage() {
+	void printSixthPage(PDDocument document) {
 		try {
 			PDPage page = new PDPage(PDRectangle.A4);
 			document.addPage(page);
@@ -346,6 +352,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 			drawShape.initialize(pageHeight, pageWidth, document, contentStream);
 			addWatermarkUnderContent(document, page);
 			addPageHeading(pageHeight, pageWidth);
+			drawShape.drawText(20, pageHeight - 50, ";ksfxuh n'kk", 16, krutiDevRegularFont);
 			drawShape.drawText(20, pageHeight - 50, ";ksfxuh n'kk", 16, krutiDevRegularFont);
 			ArrayList<YoginiDashaModel> dataList = getYoginiDashaData();
 			printYoginiDasha1(dataList.get(0));
@@ -362,7 +369,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 		}
 	}
 
-	void printSeventhPage() {
+	void printSeventhPage(PDDocument document) {
 		try {
 			PDPage page = new PDPage(PDRectangle.A4);
 			document.addPage(page);
@@ -374,6 +381,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 			addWatermarkUnderContent(document, page);
 			addPageHeading(pageHeight, pageWidth);
 			String[] chartHeading = constantHindi.shodasChartHeading;
+
 			ArrayList<ChartDetailModel> arrayList = new ArrayList<ChartDetailModel>();
 			arrayList.add(new ChartDetailModel(20f, pageHeight - 230f,
 					getIntArray(desktopHoro.getPositionForShodasvarg(0), 0)));
@@ -412,7 +420,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 		}
 	}
 
-	void printEigthPage() {
+	void printEigthPage(PDDocument document) {
 		try {
 			PDPage page = new PDPage(PDRectangle.A4);
 			document.addPage(page);
@@ -449,7 +457,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 		}
 	}
 
-	void printNinthPage() {
+	void printNinthPage(PDDocument document) {
 		try {
 			PDPage page = new PDPage(PDRectangle.A4);
 			document.addPage(page);
@@ -472,7 +480,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 
 	}
 
-	void printTenthPage() {
+	void printTenthPage(PDDocument document) {
 		try {
 			PDPage page = new PDPage(PDRectangle.A4);
 			document.addPage(page);
@@ -494,7 +502,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 		}
 	}
 
-	void printeleventhPage() {
+	void printeleventhPage(PDDocument document) {
 		try {
 			PDPage page = new PDPage(PDRectangle.A4);
 			document.addPage(page);
@@ -514,7 +522,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 		}
 	}
 
-	void printTwelvethPage() {
+	void printTwelvethPage(PDDocument document) {
 		try {
 			PDPage page = new PDPage(PDRectangle.A4);
 			document.addPage(page);
@@ -534,7 +542,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 		}
 	}
 
-	void printThirteenPage() {
+	void printThirteenPage(PDDocument document) {
 		try {
 			PDPage page = new PDPage(PDRectangle.A4);
 			document.addPage(page);
@@ -545,14 +553,14 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 			drawShape.initialize(pageHeight, pageWidth, document, contentStream);
 			addWatermarkUnderContent(document, page);
 			addPageHeading(pageHeight, pageWidth);
-			printVrashfalPridiction();
+			printVrashfalPridiction(document);
 			contentStream.close();
 		} catch (Exception e) {
 			System.out.println(e);
 		}
 	}
 
-	void printForteenPage() {
+	void printForteenPage(PDDocument document) {
 		try {
 			PDPage page = new PDPage(PDRectangle.A4);
 			document.addPage(page);
@@ -563,14 +571,14 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 			drawShape.initialize(pageHeight, pageWidth, document, contentStream);
 			addWatermarkUnderContent(document, page);
 			addPageHeading(pageHeight, pageWidth);
-			printLagnaReport();
+			printLagnaReport(document);
 			contentStream.close();
 		} catch (Exception e) {
 			System.out.println(e);
 		}
 	}
 
-	void printThirteenPage1() {
+	void printThirteenPage1(PDDocument document) {
 		try {
 			String text = "mijksä ifjHkk\"kk dk vFkZ gS fd fucU/k ys[kd ds eu dh ço`fÙk ds vuq:i gh gksuk pkfg, vkSj fucU/k dk ys[ku LoPNUn xfr ij vk/kkfjr gks vFkkZr fuca/k ,slk fy[kuk pkfg, fd ys[kd dk fparu] oSpkfjd Lrj] fo\"k; ij mldh Lo;a dh fopkj/kkjk Li\"V gks tkuh pkfg,A";
 			PDPage page = new PDPage(PDRectangle.A4);
@@ -582,40 +590,40 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 			float startY = pageHeight - 50;
 			drawShape.drawText(20, startY, "yXu pkVZ", 16, krutiDevRegularFont);
 			contentStream.setFont(krutiDevRegularFont, 12);
-			float y = addParagraph(startY - 20, text);
+			float y = addParagraph(document, startY - 20, text);
 			drawShape.drawText(20, y - 20, "yXu pkVZ", 16, krutiDevRegularFont);
 			contentStream.setFont(krutiDevRegularFont, 12);
-			y = addParagraph(y - 40, text);
+			y = addParagraph(document, y - 40, text);
 			drawShape.drawText(20, y - 20, "yXu pkVZ", 16, krutiDevRegularFont);
 			contentStream.setFont(krutiDevRegularFont, 12);
-			y = addParagraph(y - 40, text);
+			y = addParagraph(document, y - 40, text);
 			drawShape.drawText(20, y - 20, "yXu pkVZ", 16, krutiDevRegularFont);
 			contentStream.setFont(krutiDevRegularFont, 12);
-			y = addParagraph(y - 40, text);
+			y = addParagraph(document, y - 40, text);
 			drawShape.drawText(20, y - 20, "yXu pkVZ", 16, krutiDevRegularFont);
 			contentStream.setFont(krutiDevRegularFont, 12);
-			y = addParagraph(y - 40, text);
+			y = addParagraph(document, y - 40, text);
 			drawShape.drawText(20, y - 20, "yXu pkVZ", 16, krutiDevRegularFont);
 			contentStream.setFont(krutiDevRegularFont, 12);
-			y = addParagraph(y - 40, text);
+			y = addParagraph(document, y - 40, text);
 			drawShape.drawText(20, y - 20, "yXu pkVZ", 16, krutiDevRegularFont);
 			contentStream.setFont(krutiDevRegularFont, 12);
-			y = addParagraph(y - 40, text);
+			y = addParagraph(document, y - 40, text);
 			drawShape.drawText(20, y - 20, "yXu pkVZ", 16, krutiDevRegularFont);
 			contentStream.setFont(krutiDevRegularFont, 12);
-			y = addParagraph(y - 40, text);
+			y = addParagraph(document, y - 40, text);
 			drawShape.drawText(20, y - 20, "yXu pkVZ", 16, krutiDevRegularFont);
 			contentStream.setFont(krutiDevRegularFont, 12);
-			y = addParagraph(y - 40, text);
+			y = addParagraph(document, y - 40, text);
 			drawShape.drawText(20, y - 20, "yXu pkVZ", 16, krutiDevRegularFont);
 			contentStream.setFont(krutiDevRegularFont, 12);
-			y = addParagraph(y - 40, text);
+			y = addParagraph(document, y - 40, text);
 			drawShape.drawText(20, y - 20, "yXu pkVZ", 16, krutiDevRegularFont);
 			contentStream.setFont(krutiDevRegularFont, 12);
-			y = addParagraph(y - 40, text);
+			y = addParagraph(document, y - 40, text);
 			drawShape.drawText(20, y - 20, "yXu pkVZ", 16, krutiDevRegularFont);
 			contentStream.setFont(krutiDevRegularFont, 12);
-			y = addParagraph(y - 40, text);
+			y = addParagraph(document, y - 40, text);
 			contentStream.close();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -629,16 +637,17 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 		float w = 267;
 
 		drawShape.drawText(20, pageHeight - 50, "tUe fooj.k", 16, krutiDevRegularFont);
+		drawShape.drawText(20, pageHeight - 50, "tUe fooj.k", 16, krutiDevRegularFont);
 		drawShape.drawRoundedRectangle(x, y, h, w);
 		drawShape.drawRowAndColoum(x, y, h, w, 4, 30);
 		ArrayList<AxisPoint> points = new ArrayList<AxisPoint>();
-		points.add(new AxisPoint(x + w / 2, y, x + w / 2, y + h));
+		points.add(new AxisPoint(x + w / 2 - 20, y, x + w / 2 - 20, y + h));
 		drawShape.drawColumn(points);
 		String[] labels = constantHindi.birthDetailLabel;
 		String[] values = { desktopHoro.getName(), getBirthDate(), desktopHoro.getBirthTime(), desktopHoro.getPlace(),
 				String.valueOf(desktopHoro.getAyan()) };
 		printText(drawShape, x + 5, pageHeight - 80, labels, krutiDevRegularFont);
-		printText(drawShape, x + (w / 2) + 5, pageHeight - 80, values, notoSerifDevanagariRegularFont);
+		printText(drawShape, x + (w / 2) - 15, pageHeight - 80, values, notoSerifDevanagariRegularFont);
 	}
 
 	String getBirthDate() {
@@ -653,10 +662,11 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 			float h = 270;
 			float w = 267;
 			drawShape.drawText(20, pageHeight - 230, "iapkax", 16, krutiDevRegularFont);
+			drawShape.drawText(20, pageHeight - 230, "iapkax", 16, krutiDevRegularFont);
 			drawShape.drawRoundedRectangle(x, y, h, w);
 			drawShape.drawRowAndColoum(x, y, h, w, 8, 30);
 			ArrayList<AxisPoint> points = new ArrayList<AxisPoint>();
-			points.add(new AxisPoint(x + w / 2, y, x + w / 2, y + h));
+			points.add(new AxisPoint(x + w / 2 - 20, y, x + w / 2 - 20, y + h));
 			drawShape.drawColumn(points);
 			String[] panchangLabels = constantHindi.panchangLabel;
 
@@ -666,7 +676,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 					desktopHoro.getKaranName(), utility.getFormattedTime(desktopHoro.getSunRiseTimeIntArr()),
 					utility.getFormattedTime(desktopHoro.getSunSetTimeIntArr()) };
 
-			printText(drawShape, x + (w / 2) + 5, pageHeight - 260, values, krutiDevRegularFont);
+			printText(drawShape, x + (w / 2) - 15, pageHeight - 260, values, krutiDevRegularFont);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -680,10 +690,11 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 			float h = 600;
 			float w = 267;
 			drawShape.drawText(x, pageHeight - 50, "vodgM+k pØ", 16, krutiDevRegularFont);
+			drawShape.drawText(x, pageHeight - 50, "vodgM+k pØ", 16, krutiDevRegularFont);
 			drawShape.drawRoundedRectangle(x, y, h, w);
 			drawShape.drawRowAndColoum(x, y, h, w, 19, 30);
 			ArrayList<AxisPoint> points = new ArrayList<AxisPoint>();
-			points.add(new AxisPoint(x + w / 2 - 10, y, x + w / 2 - 10, y + h));
+			points.add(new AxisPoint(x + w / 2 - 20, y, x + w / 2 - 20, y + h));
 			drawShape.drawColumn(points);
 			String[] panchangLabels = constantHindi.avakahadaChakarLabel;
 			printText(drawShape, x + 5, pageHeight - 80, panchangLabels, krutiDevRegularFont);
@@ -697,7 +708,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 					"" + desktopHoro.getAyanamsaDms(birthDetailBean.getLanguageCode()),
 					"" + desktopHoro.getAyanamsaType(), desktopHoro.getObliquityDms(birthDetailBean.getLanguageCode()),
 					utility.getFormattedTime(desktopHoro.getSiderealTimeIntArr()) };
-			printText(drawShape, x + (w / 2) + 5 - 10, pageHeight - 80, values, krutiDevRegularFont);
+			printText(drawShape, x + (w / 2) - 15, pageHeight - 80, values, krutiDevRegularFont);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -705,6 +716,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 	}
 
 	void printLagnaChart() throws IOException {
+		drawShape.drawText(20, pageHeight - 50, "yXu pkVZ", 16, krutiDevRegularFont);
 		drawShape.drawText(20, pageHeight - 50, "yXu pkVZ", 16, krutiDevRegularFont);
 		drawShape.drawKundli(pageHeight, pageWidth, 20f, pageHeight - 230f);
 		float[] x = { 20f + 80, 20f + 38, 20f + 26, 20f + 70, 20f + 26, 20f + 38, 20f + 80, 20f + 124, 20f + 136,
@@ -718,6 +730,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 	}
 
 	void printMoonChart() throws IOException {
+		drawShape.drawText(20, pageHeight - 250f, "paæ pkVZ", 16, krutiDevRegularFont);
 		drawShape.drawText(20, pageHeight - 250f, "paæ pkVZ", 16, krutiDevRegularFont);
 		drawShape.drawKundli(pageHeight, pageWidth, 20f, pageHeight - 430f);
 
@@ -733,6 +746,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 
 	void printNavmanshChart() throws IOException {
 		drawShape.drawText(20, pageHeight - 450f, "uoeka'k pkVZ", 16, krutiDevRegularFont);
+		drawShape.drawText(20, pageHeight - 450f, "uoeka'k pkVZ", 16, krutiDevRegularFont);
 		drawShape.drawKundli(pageHeight, pageWidth, 20f, pageHeight - 630f);
 
 		float[] x2 = { 20f + 80, 20f + 38, 20f + 26, 20f + 70, 20f + 26, 20f + 38, 20f + 80, 20f + 124, 20f + 136,
@@ -746,6 +760,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 	}
 
 	void printPlanetPositionTable() throws IOException {
+		drawShape.drawText(210, pageHeight - 50, "xzg fLFkfr", 16, krutiDevRegularFont);
 		drawShape.drawText(210, pageHeight - 50, "xzg fLFkfr", 16, krutiDevRegularFont);
 		drawShape.drawTableHeader(210, pageHeight - 85, 25, 360);
 		float x = 210;
@@ -785,6 +800,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 
 	void printSubPlanetPositionTable() throws IOException {
 
+		drawShape.drawText(210, pageHeight - 430, "lc xzg fLFkfr", 16, krutiDevRegularFont);
 		drawShape.drawText(210, pageHeight - 430, "lc xzg fLFkfr", 16, krutiDevRegularFont);
 		drawShape.drawTableHeader(210, pageHeight - 465, 25, 360);
 		float x = 210;
@@ -829,6 +845,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 
 	void printChalitChart() throws IOException {
 		drawShape.drawText(20, pageHeight - 50, "pfyr pkVZ", 16, krutiDevRegularFont);
+		drawShape.drawText(20, pageHeight - 50, "pfyr pkVZ", 16, krutiDevRegularFont);
 		drawShape.drawKundli(pageHeight, pageWidth, 20f, pageHeight - 230f);
 		float[] x = { 20f + 80, 20f + 38, 20f + 26, 20f + 70, 20f + 26, 20f + 38, 20f + 80, 20f + 124, 20f + 136,
 				20f + 95, 20f + 136, 20f + 124 };
@@ -842,6 +859,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 	}
 
 	void printGocharChart() throws IOException {
+		drawShape.drawText(20, pageHeight - 250f, "xkspj", 16, krutiDevRegularFont);
 		drawShape.drawText(20, pageHeight - 250f, "xkspj", 16, krutiDevRegularFont);
 		drawShape.drawKundli(pageHeight, pageWidth, 20f, pageHeight - 430f);
 
@@ -857,6 +875,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 	}
 
 	void printKarkanshChart() throws IOException {
+		drawShape.drawText(20, pageHeight - 450f, "dkjdka'k", 16, krutiDevRegularFont);
 		drawShape.drawText(20, pageHeight - 450f, "dkjdka'k", 16, krutiDevRegularFont);
 		drawShape.drawKundli(pageHeight, pageWidth, 20f, pageHeight - 630f);
 
@@ -875,6 +894,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 
 	void printSwanshChart() throws IOException {
 		drawShape.drawText(20, pageHeight - 650f, "Loka'k", 16, krutiDevRegularFont);
+		drawShape.drawText(20, pageHeight - 650f, "Loka'k", 16, krutiDevRegularFont);
 		drawShape.drawKundli(pageHeight, pageWidth, 20f, pageHeight - 830f);
 
 		float[] x2 = { 20f + 80, 20f + 38, 20f + 26, 20f + 70, 20f + 26, 20f + 38, 20f + 80, 20f + 124, 20f + 136,
@@ -891,6 +911,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 	}
 
 	void printChalitTable() throws IOException {
+		drawShape.drawText(210, pageHeight - 50, "pfyr rkfydk", 16, krutiDevRegularFont);
 		drawShape.drawText(210, pageHeight - 50, "pfyr rkfydk", 16, krutiDevRegularFont);
 		drawShape.drawTableHeader(210, pageHeight - 85, 25, 360);
 		float x = 210;
@@ -931,6 +952,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 	}
 
 	void printAstakvargTable() throws IOException {
+		drawShape.drawText(210, pageHeight - 430, "v\"VdoxZ", 16, krutiDevRegularFont);
 		drawShape.drawText(210, pageHeight - 430, "v\"VdoxZ", 16, krutiDevRegularFont);
 		drawShape.drawTableHeader(210, pageHeight - 465, 25, 360);
 		float x = 210;
@@ -977,6 +999,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 	void printPrashtakvargaTable1() throws IOException {
 
 		drawShape.drawText(10, pageHeight - 50, "lw;Z", 16, krutiDevRegularFont);
+		drawShape.drawText(10, pageHeight - 50, "lw;Z", 16, krutiDevRegularFont);
 		float x = 10;
 		float y = pageHeight - 260;
 		float h = 200;
@@ -1004,6 +1027,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 	}
 
 	void printPrashtakvargaTable2() throws IOException {
+		drawShape.drawText(302, pageHeight - 50, "paæ", 16, krutiDevRegularFont);
 		drawShape.drawText(302, pageHeight - 50, "paæ", 16, krutiDevRegularFont);
 		float x = 302;
 		float y = pageHeight - 260;
@@ -1033,6 +1057,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 
 	void printPrashtakvargaTable3() throws IOException {
 		drawShape.drawText(10, pageHeight - 280, "eaxy", 16, krutiDevRegularFont);
+		drawShape.drawText(10, pageHeight - 280, "eaxy", 16, krutiDevRegularFont);
 		float x = 10;
 		float y = pageHeight - 490;
 		float h = 200;
@@ -1060,6 +1085,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 	}
 
 	void printPrashtakvargaTable4() throws IOException {
+		drawShape.drawText(302, pageHeight - 280, "cq/k", 16, krutiDevRegularFont);
 		drawShape.drawText(302, pageHeight - 280, "cq/k", 16, krutiDevRegularFont);
 		float x = 302;
 		float y = pageHeight - 490;
@@ -1089,6 +1115,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 
 	void printPrashtakvargaTable5() throws IOException {
 		drawShape.drawText(10, pageHeight - 510, "xq#", 16, krutiDevRegularFont);
+		drawShape.drawText(10, pageHeight - 510, "xq#", 16, krutiDevRegularFont);
 		float x = 10;
 		float y = pageHeight - 720;
 		float h = 200;
@@ -1117,6 +1144,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 
 	void printPrashtakvargaTable6() throws IOException {
 		drawShape.drawText(302, pageHeight - 510, "'kqØ", 16, krutiDevRegularFont);
+		drawShape.drawText(302, pageHeight - 510, "'kqØ", 16, krutiDevRegularFont);
 		float x = 302;
 		float y = pageHeight - 720;
 		float h = 200;
@@ -1144,7 +1172,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 	}
 
 	void printPrashtakvargaTable7() throws IOException {
-
+		drawShape.drawText(10, pageHeight - 50, "'kfu ", 16, krutiDevRegularFont);
 		drawShape.drawText(10, pageHeight - 50, "'kfu ", 16, krutiDevRegularFont);
 		float x = 10;
 		float y = pageHeight - 260;
@@ -1173,6 +1201,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 	}
 
 	void printPrashtakvargaTable8() throws IOException {
+		drawShape.drawText(302, pageHeight - 50, "jkgq", 16, krutiDevRegularFont);
 		drawShape.drawText(302, pageHeight - 50, "jkgq", 16, krutiDevRegularFont);
 		float x = 302;
 		float y = pageHeight - 260;
@@ -1434,6 +1463,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 
 	void printShodasTable() throws IOException {
 		drawShape.drawText(10, pageHeight - 450, "'kksM\"koxZ rkfydk", 16, krutiDevRegularFont);
+		drawShape.drawText(10, pageHeight - 450, "'kksM\"koxZ rkfydk", 16, krutiDevRegularFont);
 		float x = 13;
 		float y = pageHeight - 800;
 		float h = 360;
@@ -1458,6 +1488,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 	}
 
 	void printShodasBhavTable() throws IOException {
+		drawShape.drawText(302, pageHeight - 450, "'kksM\"koxZ Hkko rkfydk", 16, krutiDevRegularFont);
 		drawShape.drawText(302, pageHeight - 450, "'kksM\"koxZ Hkko rkfydk", 16, krutiDevRegularFont);
 		float x = 307;
 		float y = pageHeight - 800;
@@ -1484,6 +1515,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 	}
 
 	void printChart(float startX, float startY, int[] planetArray, String heading) throws IOException {
+		drawShape.drawText(startX, startY + 180, heading, 16, krutiDevRegularFont);
 		drawShape.drawText(startX, startY + 180, heading, 16, krutiDevRegularFont);
 		drawShape.drawKundli(pageHeight, pageWidth, startX, startY);
 		float[] x = { startX + 80, startX + 38, startX + 26, startX + 70, startX + 26, startX + 38, startX + 80,
@@ -1798,6 +1830,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 
 	void printKPChart() throws IOException {
 		drawShape.drawText(20, pageHeight - 50, "dsih dqaMyh", 16, krutiDevRegularFont);
+		drawShape.drawText(20, pageHeight - 50, "dsih dqaMyh", 16, krutiDevRegularFont);
 		drawShape.drawKundli(pageHeight, pageWidth, 20f, pageHeight - 230f);
 		float[] x = { 20f + 80, 20f + 38, 20f + 26, 20f + 70, 20f + 26, 20f + 38, 20f + 80, 20f + 124, 20f + 136,
 				20f + 95, 20f + 136, 20f + 124 };
@@ -1817,6 +1850,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 
 	void printKPRashiChart() throws IOException {
 		drawShape.drawText(20, pageHeight - 250f, "jkf'k dqaMyh", 16, krutiDevRegularFont);
+		drawShape.drawText(20, pageHeight - 250f, "jkf'k dqaMyh", 16, krutiDevRegularFont);
 		drawShape.drawKundli(pageHeight, pageWidth, 20f, pageHeight - 430f);
 
 		float[] x1 = { 20f + 80, 20f + 38, 20f + 26, 20f + 70, 20f + 26, 20f + 38, 20f + 80, 20f + 124, 20f + 136,
@@ -1831,6 +1865,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 	}
 
 	void printKPPlanetPositionTable() throws IOException {
+		drawShape.drawText(210, pageHeight - 50, "xzg fLFkfr", 16, krutiDevRegularFont);
 		drawShape.drawText(210, pageHeight - 50, "xzg fLFkfr", 16, krutiDevRegularFont);
 		drawShape.drawTableHeader(210, pageHeight - 85, 25, 360);
 		float x = 210;
@@ -1874,6 +1909,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 	}
 
 	void printBhavSandhiTable() throws IOException {
+		drawShape.drawText(210, pageHeight - 430, "Hkko laf/k", 16, krutiDevRegularFont);
 		drawShape.drawText(210, pageHeight - 430, "Hkko laf/k", 16, krutiDevRegularFont);
 		drawShape.drawTableHeader(210, pageHeight - 465, 25, 360);
 		float x = 210;
@@ -1922,6 +1958,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 			float h = 250;
 			float w = 230;
 			drawShape.drawText(x, pageHeight - 50, "xzg funsZ'ku", 16, krutiDevRegularFont);
+			drawShape.drawText(x, pageHeight - 50, "xzg funsZ'ku", 16, krutiDevRegularFont);
 			drawShape.drawTableHeader(x, pageHeight - 85, 25, w);
 			drawShape.drawTableWithHeader(x, y, h, w, 25);
 			drawShape.drawRaw(x, y, h, w, 8, 25);
@@ -1959,6 +1996,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 			float h = 325;
 			float w = 230;
 			drawShape.drawText(x, pageHeight - 330, "Hkko funsZ'ku", 16, krutiDevRegularFont);
+			drawShape.drawText(x, pageHeight - 330, "Hkko funsZ'ku", 16, krutiDevRegularFont);
 			drawShape.drawTableHeader(x, pageHeight - 365, 25, w);
 			drawShape.drawTableWithHeader(x, y, h, w, 25);
 			drawShape.drawRaw(x, y, h, w, 11, 25);
@@ -1995,6 +2033,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 			float y = pageHeight - 310f;
 			float h = 250;
 			float w = 330;
+			drawShape.drawText(x, pageHeight - 50, "xzg funsZ'ku¼ [kkdk 2½", 16, krutiDevRegularFont);
 			drawShape.drawText(x, pageHeight - 50, "xzg funsZ'ku¼ [kkdk 2½", 16, krutiDevRegularFont);
 			drawShape.drawTableHeader(x, pageHeight - 85, 25, w);
 			drawShape.drawTableWithHeader(x, y, h, w, 25);
@@ -2041,6 +2080,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 			float h = 200;
 			float w = 330;
 			drawShape.drawText(x, pageHeight - 330, "'kkld xzg", 16, krutiDevRegularFont);
+			drawShape.drawText(x, pageHeight - 330, "'kkld xzg", 16, krutiDevRegularFont);
 			drawShape.drawTableHeader(x, pageHeight - 365, 25, w);
 			drawShape.drawTableWithHeader(x, y, h, w, 25);
 			drawShape.drawRaw(x, y, h, w, 6, 25);
@@ -2071,6 +2111,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 			float y = pageHeight - 695;
 			float h = 125;
 			float w = 330;
+			drawShape.drawText(x, pageHeight - 560, "vU;", 16, krutiDevRegularFont);
 			drawShape.drawText(x, pageHeight - 560, "vU;", 16, krutiDevRegularFont);
 			drawShape.drawTableHeader(x, pageHeight - 595, 25, w);
 			drawShape.drawTableWithHeader(x, y, h, w, 25);
@@ -2115,6 +2156,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 			float h = 200;
 			float w = pageWidth - 20;
 			drawShape.drawText(x, pageHeight - 50, "xzg funsZ'ku ¼u{k= ukM+h½", 16, krutiDevRegularFont);
+			drawShape.drawText(x, pageHeight - 50, "xzg funsZ'ku ¼u{k= ukM+h½", 16, krutiDevRegularFont);
 			drawShape.drawTableHeader(x, pageHeight - 80, 20, w);
 			drawShape.drawTableWithHeader(x, y, h, w, 20);
 			drawShape.drawRaw(x, y, h, w, 8, 20);
@@ -2149,6 +2191,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 			float y = pageHeight - 550f;
 			float h = 260;
 			float w = pageWidth - 20;
+			drawShape.drawText(x, pageHeight - 280, "dLiy baVjfyaDl ¼lc½", 16, krutiDevRegularFont);
 			drawShape.drawText(x, pageHeight - 280, "dLiy baVjfyaDl ¼lc½", 16, krutiDevRegularFont);
 			drawShape.drawTableHeader(x, pageHeight - 310, 20, w);
 			drawShape.drawTableWithHeader(x, y, h, w, 20);
@@ -2190,6 +2233,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 			float h = 200;
 			float w = pageWidth - 20;
 			drawShape.drawText(x, pageHeight - 570, "dLiy baVjfyaDl ¼lc lc½", 16, krutiDevRegularFont);
+			drawShape.drawText(x, pageHeight - 570, "dLiy baVjfyaDl ¼lc lc½", 16, krutiDevRegularFont);
 			drawShape.drawTableHeader(x, pageHeight - 600, 20, w);
 			drawShape.drawTableWithHeader(x, y, h, w, 20);
 			drawShape.drawRaw(x, y, h, w, 8, 20);
@@ -2223,7 +2267,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 		}
 	}
 
-	public float addParagraph(float startY, String text) throws Exception {
+	public float addParagraph(PDDocument document, float startY, String text) throws Exception {
 		try {
 
 			float margin = 20; // Left and right margin
@@ -2290,17 +2334,21 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 		float startX = 212f;
 		float startY = pageHeight - 230f;
 		drawShape.drawText(startX, pageHeight - 50, "rkftd o\"kZQy dqaMyh", 16, krutiDevRegularFont);
+		drawShape.drawText(startX, pageHeight - 50, "rkftd o\"kZQy dqaMyh", 16, krutiDevRegularFont);
 		drawShape.drawKundli(pageHeight, pageWidth, startX, startY);
 		float[] x = { startX + 80, startX + 38, startX + 26, startX + 70, startX + 26, startX + 38, startX + 80,
 				startX + 124, startX + 136, startX + 95, startX + 136, startX + 124 };
 		float[] y = { startY + 90, startY + 132, startY + 122, startY + 80, startY + 40, startY + 30, startY + 70,
 				startY + 30, startY + 40, startY + 80, startY + 122, startY + 132 };
-		int[] planetArray = new VarshfalCalculation().getVarshfalKundliPlanetsRashiArray(birthDetailBean, 2005, 0);
+		Calendar calendar = Calendar.getInstance();
+		int[] planetArray = new VarshfalCalculation().getVarshfalKundliPlanetsRashiArray(birthDetailBean,
+				calendar.get(Calendar.YEAR), 1);
 		drawRashiInBhav(x, y, planetArray[12]);
 		printPlanetsInHouse(startX, startY, planetArray, planetArray[12]);
 	}
 
 	void printVarshfalPlanetPositionTable() throws IOException {
+		drawShape.drawText(20, pageHeight - 250f, "xzg fLFkfr", 16, krutiDevRegularFont);
 		drawShape.drawText(20, pageHeight - 250f, "xzg fLFkfr", 16, krutiDevRegularFont);
 		drawShape.drawTableHeader(20, pageHeight - 285f, 25, 220);
 		float x = 20;
@@ -2317,7 +2365,9 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 		drawShape.drawColumn(points);
 		float[] xaxis = { x + 10, x + 60, x + 130, x + 230, x + 310 };
 		printHeading(xaxis, pageHeight - 275f, constantHindi.varshfalPlanetPosHeading);
-		ArrayList<VarshfalPlanetData> list = new VarshfalCalculation().getVarshfalPlanetsData(birthDetailBean, 2005, 0);
+		Calendar calendar = Calendar.getInstance();
+		ArrayList<VarshfalPlanetData> list = new VarshfalCalculation().getVarshfalPlanetsData(birthDetailBean,
+				calendar.get(Calendar.YEAR), 1);
 		populateVarshfalPlanetTable(xaxis, y + 325, list);
 	}
 
@@ -2341,35 +2391,44 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 		float w = 267;
 
 		drawShape.drawText(x, pageHeight - 250f, "tUe fooj.k", 16, krutiDevRegularFont);
+		drawShape.drawText(x, pageHeight - 250f, "tUe fooj.k", 16, krutiDevRegularFont);
 		drawShape.drawRoundedRectangle(x, y, h, w);
 		drawShape.drawRowAndColoum(x, y, h, w, 4, 30);
 		ArrayList<AxisPoint> points = new ArrayList<AxisPoint>();
-		points.add(new AxisPoint(x + w / 2, y, x + w / 2, y + h));
+		points.add(new AxisPoint(x + w / 2 - 30, y, x + w / 2 - 30, y + h));
 		drawShape.drawColumn(points);
 		String[] labels = constantHindi.birthDetailLabel;
 		String[] values = { desktopHoro.getName(), getBirthDate(), desktopHoro.getBirthTime(), desktopHoro.getPlace(),
 				String.valueOf(desktopHoro.getAyan()) };
 		printText(drawShape, x + 5, pageHeight - 280, labels, krutiDevRegularFont);
-		printText(drawShape, x + (w / 2) + 5, pageHeight - 280, values, poppinsRegularFont);
+		printText(drawShape, x + (w / 2) - 25, pageHeight - 280, values, poppinsRegularFont);
 	}
 
-	void printVrashfalPridiction() throws Exception {
+	void printVrashfalPridiction(PDDocument document) throws Exception {
 		float x = 20;
 		VarshfalCalculation varshfalCalculation = new VarshfalCalculation();
-		int munthBhav = varshfalCalculation.getMunthaBhav(birthDetailBean, 2005, 0);
-		String munthaDesc = varshfalCalculation.getMunthaDesc(munthBhav).getDesc();
-		ArrayList<VarshfalDashaBean> arrayList = varshfalCalculation.getBhavishyafal(birthDetailBean, 2005, 0);
+		Calendar calendar = Calendar.getInstance();
+		int yearCount = calendar.get(Calendar.YEAR) - Integer.parseInt(birthDetailBean.getDateTimeBean().getYear());
+		int munthBhav = varshfalCalculation.getMunthaBhav(birthDetailBean, calendar.get(Calendar.YEAR), yearCount);
+		String munthaDesc = varshfalCalculation.getMunthaDesc(munthBhav - 1).getDesc();
+
+		ArrayList<VarshfalDashaBean> arrayList = varshfalCalculation.getBhavishyafal(birthDetailBean,
+				calendar.get(Calendar.YEAR), yearCount);
 		float startY = pageHeight - 50;
 		drawShape.drawText(20, startY, "eqaFkk Hkko% " + munthBhav, 16, krutiDevRegularFont);
+		drawShape.drawText(20, startY, "eqaFkk Hkko% " + munthBhav, 16, krutiDevRegularFont);
 		contentStream.setFont(krutiDevRegularFont, 12);
-		float y = addParagraph(startY - 20, munthaDesc);
-		for (int i = 0; i < arrayList.size() - 1; i++) {
+		float y = addParagraph(document, startY - 20, munthaDesc);
+		for (int i = 0; i < arrayList.size(); i++) {
+			drawShape.drawText(20, y - 20, arrayList.get(i).getStartTime() + " & " + arrayList.get(i).getEndTime(), 16,
+					krutiDevRegularFont);
 			drawShape.drawText(20, y - 20, arrayList.get(i).getStartTime() + " & " + arrayList.get(i).getEndTime(), 16,
 					krutiDevRegularFont);
 			contentStream.setFont(krutiDevRegularFont, 12);
-			y = addParagraph(y - 40, arrayList.get(i).getResult());
+			y = addParagraph(document, y - 40, arrayList.get(i).getResult());
 		}
 		y = y - 10;
+		drawShape.drawText(20, y, constantHindi.jeevanRatan, 16, krutiDevRegularFont);
 		drawShape.drawText(20, y, constantHindi.jeevanRatan, 16, krutiDevRegularFont);
 		float h = 180;
 		float w = 500;
@@ -2391,6 +2450,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 
 		y = y - h - 20;
 		drawShape.drawText(20, y, constantHindi.punyaRatan, 16, krutiDevRegularFont);
+		drawShape.drawText(20, y, constantHindi.punyaRatan, 16, krutiDevRegularFont);
 		y = y - 10;
 		drawShape.drawRoundedRectangle(x, y - h, h, w);
 		drawShape.drawRowAndColoum(x, y - h, h, w, 5, 30);
@@ -2403,6 +2463,7 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 		printText(drawShape, x + 5, y - 20, labels, krutiDevRegularFont);
 		printText(drawShape, x + (w / 4) + 5, y - 20, values2, krutiDevRegularFont);
 		y = y - h - 20;
+		drawShape.drawText(20, y, constantHindi.bhagyaRatan, 16, krutiDevRegularFont);
 		drawShape.drawText(20, y, constantHindi.bhagyaRatan, 16, krutiDevRegularFont);
 		y = y - 10;
 		drawShape.drawRoundedRectangle(x, y - h, h, w);
@@ -2418,18 +2479,19 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 
 	}
 
-	void printLagnaReport() throws Exception {
+	void printLagnaReport(PDDocument document) throws Exception {
 		float x = 20;
 		LagnaCalculation lagnaCalculation = new LagnaCalculation(desktopHoro);
 		String lagna = lagnaCalculation.getLagna();
 		PersonalityPrediction personalityPrediction = lagnaCalculation.getLagnaReport();
 		float startY = pageHeight - 50;
 		drawShape.drawText(20, startY, "vkidk yXu gS%" + lagna, 16, krutiDevRegularFont);
+		drawShape.drawText(20, startY, "vkidk yXu gS%" + lagna, 16, krutiDevRegularFont);
 		contentStream.setFont(krutiDevRegularFont, 12);
-		float y = addParagraph(startY - 20, constantHindi.lagnaDesc);
+		float y = addParagraph(document, startY - 20, constantHindi.lagnaDesc);
 		String[] heading = { "LokLFk; # yXu ds fy,".replace("#", lagna),
-				"LokHkko o O;fäRo # yXu ds fy,".replace("#", lagna),
-				"'kkjhfjd jax :i # yXu ds fy,".replace("#", lagna) };
+				"'kkjhfjd jax :i # yXu ds fy,".replace("#", lagna),
+				"LokHkko o O;fäRo # yXu ds fy,".replace("#", lagna) };
 		String[] arr = { personalityPrediction.getHealthPrediction(),
 				personalityPrediction.getPhysicalAppearancePrediction(),
 				personalityPrediction.getTemperamentAndPersonalityPrediction() };
@@ -2437,14 +2499,15 @@ public class PDFGenerateServiceImpl implements PDFGenerateService {
 
 		for (int i = 0; i < heading.length; i++) {
 			drawShape.drawText(20, y - 20, heading[i], 16, krutiDevRegularFont);
+			drawShape.drawText(20, y - 20, heading[i], 16, krutiDevRegularFont);
 			contentStream.setFont(krutiDevRegularFont, 12);
-			y = addParagraph(y - 40, arr[i]);
+			y = addParagraph(document, y - 40, arr[i]);
 		}
 
 	}
 
 	String getBalanceOfDasha(int[] arr) {
-		return constantHindi.nakshLord[arr[0]] + " " + arr[1] + " " + constantHindi.year + " " + arr[2] + " "
-				+ constantHindi.month + " " + arr[3] + " " + constantHindi.day;
+		return constantHindi.nakshLord[arr[0]] + " " + arr[1] + constantHindi.year + " " + arr[2] + constantHindi.month
+				+ " " + arr[3] + constantHindi.day;
 	}
 }

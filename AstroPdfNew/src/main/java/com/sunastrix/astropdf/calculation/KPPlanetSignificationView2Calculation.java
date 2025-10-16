@@ -207,7 +207,7 @@ public class KPPlanetSignificationView2Calculation {
 		int a = (int) (d / 120.0);
 		d -= a * 120.0;
 		a = (int) (d * 3.0 / 40.0);
-		return a;
+		return KpConstants.PLANET_NAKSHTRA_LORD[a];
 	}
 
 	public int getBhavOfPlanet(double cusp2, double cusp1, int cuspIndex, double plntDegree) {

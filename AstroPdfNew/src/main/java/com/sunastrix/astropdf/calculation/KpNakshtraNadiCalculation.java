@@ -10,8 +10,6 @@ import com.sunastrix.astropdf.util.ConstantHindi;
 import com.sunastrix.astropdf.util.KpConstants;
 import com.sunastrix.astropdf.util.Utility;
 
-
-
 public class KpNakshtraNadiCalculation {
 	DesktopHoroNew desktopHoro;
 	double[] kpPlanetDegree;
@@ -37,7 +35,7 @@ public class KpNakshtraNadiCalculation {
 				desktopHoro.getMars(), desktopHoro.getMercury(), desktopHoro.getJupitor(), desktopHoro.getVenus(),
 				desktopHoro.getSaturn(), desktopHoro.getRahu(), desktopHoro.getKetu(), desktopHoro.getUranus(),
 				desktopHoro.getNeptune(), desktopHoro.getPluto() };
-		System.out.println("Sun"+desktopHoro.getSun());
+		System.out.println("Sun" + desktopHoro.getSun());
 		return planetDegreeArray;
 	}
 
@@ -92,8 +90,6 @@ public class KpNakshtraNadiCalculation {
 
 		return kpPlanetArray;
 	}
-
-	
 
 	private int[] getHousesOfPlanetRashi(int plntNumber) {
 		int cuspRashi;
@@ -351,9 +347,9 @@ public class KpNakshtraNadiCalculation {
 	}
 
 	private int getPlanetStarLordNadi(int plntNumber) {
-		
-		int starLord=getStarLord(kpPlanetDegree[plntNumber]);
-		System.out.println("Sun---"+kpPlanetDegree[plntNumber]+"--"+starLord);
+
+		int starLord = getStarLord(kpPlanetDegree[plntNumber]);
+
 		return starLord;
 	}
 
@@ -366,18 +362,18 @@ public class KpNakshtraNadiCalculation {
 		int a = (int) (d / 120.0);
 		d -= a * 120.0;
 		a = (int) (d * 3.0 / 40.0);
-		return a;
+		// System.out.println("Startlord---"+d+"--"+a);
+		return KpConstants.PLANET_NAKSHTRA_LORD[a];
 	}
 
-	private int getSubLord(double deg) {
+	int getSubLord(double deg) {
 		double d = deg;
 		int i = 0;
-		int a = getStarLord(d);
-
-		d -= ((int) (d / 120.0)) * 120.0;
-		d -= a * (40.0 / 3.0);
+		int a = (int) (d / 120.0);
+		d -= a * 120.0;
+		a = (int) (d * 3.0 / 40.0);
+		d -= a * 40.0 / 3.0;
 		d *= 9.0;
-
 		int b = 0;
 		while (b < 9) {
 			i = a + b;
@@ -392,7 +388,8 @@ public class KpNakshtraNadiCalculation {
 			b++;
 		}
 		b = i;
-		return b;
+
+		return KpConstants.PLANET_NAKSHTRA_LORD[b];
 	}
 
 	private String getFormattedStringForNakshNadi(int planet, int[] plaNadi) {

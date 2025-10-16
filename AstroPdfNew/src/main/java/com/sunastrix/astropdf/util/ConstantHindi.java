@@ -8,10 +8,10 @@ public class ConstantHindi {
 	public String jeevanRatan = "thou jRu";
 	public String punyaRatan = "iq.; jRu";
 	public String bhagyaRatan = "HkkX; jRu";
-	public String year="o\"kZ";
-	public String month="eghuk";
-	public String day="fnu";
-	     
+	public String year = "o\"kZ";
+	public String month = "eghuk";
+	public String day = "fnu";
+
 	public String lagnaDesc = "Hkkjrh; T;ksfr\"k esa yXu dk cgqr egRoiw.kZ LFkku gSA O;fä ds tUe ds le; esa tks jkf'k iwohZ; f{krt ij mfnr gks jgh gksrh gS ml jkf'k dks yXu jkf'k dgrs gS yXu O;fä ds thou dh NksVh ls NksVh ?kVuk ds ckjs esa enn djrk gSA";
 
 	public String[] planetNameWithLagna = new String[] { "yXu", "lw;Z", "pUæ", "eaxy", "cq/k", "xq#", "'kqØ", "'kfu",
@@ -139,8 +139,8 @@ public class ConstantHindi {
 
 	public static String[] shodasChartHeading = { "yXu pkVZ", "gksjk & ¼/ku lEifr½", "æs\"dk.k & ¼HkkbZ cgu½",
 			"prqFkkaZ'k &¼HkkX;½", "lIreka'k &¼cPps½", "uoeka'k&¼ifr iRuh½", "n'keka'k&¼O;olk;½",
-			"}kn'kka'k &¼ekrk firk½", "\"kksM'kka'k &¼okgu½", "fo'kka'k¼/kkfeZd :fp½", "lIrfoa'kka'k &¼cy½",
-			"prqfoaZ'kka'k&¼f'k{kk½", "f='kka'k &¼nqHkkZX;½", "[kosnka'k&¼'kqHk Qy½", "v{kosnka'k&¼lkekU; thou½",
+			"}kn'kka'k &¼ekrk firk½", "\"kksM'kka'k &¼okgu½", "fo'kka'k¼/kkfeZd :fp½", "prqfoaZ'kka'k&¼f'k{kk½",
+			"lIrfoa'kka'k &¼cy½", "f='kka'k &¼nqHkkZX;½", "[kosnka'k&¼'kqHk Qy½", "v{kosnka'k&¼lkekU; thou½",
 			"\"k\"Vîa'k&¼lkekU; thou½" };
 
 }

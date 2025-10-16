@@ -1,6 +1,7 @@
 package com.sunastrix.astropdf.calculation;
 
 import java.io.File;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,9 +54,9 @@ public class GemstoneCalculation {
 	ArrayList<GemstoneItem> getList() {
 		try {
 			ObjectMapper mapper = new ObjectMapper();
-			List<GemstoneItem> list = mapper.readValue(new File("src/main/resources/json/gemstone_report" + ".json"),
-					new TypeReference<List<GemstoneItem>>() {
-					});
+			InputStream inputStream = getClass().getResourceAsStream("/json/gemstone_report.json");
+			List<GemstoneItem> list = mapper.readValue(inputStream, new TypeReference<List<GemstoneItem>>() {
+			});
 
 			ArrayList<GemstoneItem> arrayList = new ArrayList<>(list);
 			return arrayList;
@@ -65,19 +66,4 @@ public class GemstoneCalculation {
 		}
 	}
 
-	/*
-	 * ArrayList<GemstoneItem> getList() { try { ObjectMapper mapper = new
-	 * ObjectMapper();
-	 * mapper.configure(com.fasterxml.jackson.databind.MapperFeature.
-	 * ACCEPT_CASE_INSENSITIVE_PROPERTIES, true);
-	 * 
-	 * List<GemstoneItem> list = mapper.readValue( new
-	 * File("src/main/resources/json/gemstone_report.json"), new
-	 * TypeReference<List<GemstoneItem>>() {} );
-	 * 
-	 * return new ArrayList<>(list);
-	 * 
-	 * } catch (Exception e) { e.printStackTrace(); throw new
-	 * RuntimeException("Failed to read muhurat data", e); } }
-	 */
 }
