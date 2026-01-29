@@ -1,0 +1,223 @@
+//
+form#two {
+	background: #ffffff;
+	width: 470px;
+	padding: 10px;
+	border: 1px solid #000;
+	margin: 0 auto;
+}
+
+form#two fieldset {
+	width: 450px;
+	display: block;
+	border: 1px solid #c60309;
+	padding: 5px;
+	font-family: verdana, sans-serif;
+	margin-bottom: 0.5em;
+	line-height: 1.5em;
+}
+
+form#two fieldset#opt {
+	background: #dee;
+}
+
+form#two legend {
+	font-family: georgia, sans-serif;
+	font-size: 1.1em;
+	font-weight: bold;
+	border: 2px solid #c60309;
+	margin-bottom: 3px;
+	padding: 3px;
+	width: 180px;
+	background: #fff;
+}
+
+form#two label {
+	clear: left;
+	display: block;
+	float: left;
+	width: 220px;
+	text-align: right;
+	padding-right: 10px;
+	color: #000;
+	margin-bottom: 0.1em;
+}
+
+form#two input {
+	border: 1px solid #000;
+	/*background: #fff url(cssplay/form.gif) repeat-x top left;*/
+	margin-bottom: 0.7em;
+	float: left;
+	margin-right: 0.6em;
+}
+
+form#two select {
+	margin-bottom: 0.7em;
+	float: left;
+	margin-right: 0.1em;
+}
+
+form#two textarea {
+	width: 410px;
+	height: 15em;
+	border: 1px solid #000;
+	padding: 0.5em;
+	overflow: auto;
+	/*background: #000 url(cssplay/form.gif) repeat-x bottom left;*/
+}
+
+form#two option {
+	background: #fff;
+	color: #000;
+}
+
+form#two optgroup {
+	background: #abb;
+	color: #000;
+	font-family: georgia, serif;
+}
+
+form#two optgroup option {
+	background: #9aa;
+	color: #000;
+}
+
+form#two #button1, form#two #button2 {
+	color: #000;
+	padding-right: 0.5em;
+	cursor: pointer;
+	width: 205px;
+	margin-left: 8px;
+}
+
+form#two #button1:hover, form#two #button2:hover {
+	background-position: center left;
+	color: #000;
+}
+
+form#two div#tab {
+	font-family: georgia, sans-serif;
+	font-size: 1.1em;
+	font-weight: bold;
+	border: 3px solid #000;
+	margin-bottom: 3px;
+	padding: 3px;
+	width: 25em;
+	background: #000;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+form#two a {
+	font-weight: bold;
+	text-decoration: none;
+	color: #f30;
+}
+
+form#two a:hover {
+	color: #000;
+	background-color: #f30;
+}
+
+form#two label {
+	font-weight: bold;
+}
+
+form#two .asholder {
+	position: relative;
+}
+
+form#three legend {
+	font-family: georgia, sans-serif;
+	font-size: 1.1em;
+	font-weight: bold;
+	border: 2px solid #c60309;
+	margin-bottom: 3px;
+	padding: 3px;
+	width: 180px;
+	background: #fff;
+}
+
+form#three fieldset {
+	width: 440px;
+	display: block;
+	border: 1px solid #c60309;
+	padding: 2px;
+	font-family: verdana, sans-serif;
+	margin-bottom: 0.5em;
+	line-height: 1.5em;
+}
+
+form#three .asholder {
+	position: relative;
+}
+
+form#three legend {
+	font-family: georgia, sans-serif;
+	font-size: 1.1em;
+	font-weight: bold;
+	border: 2px solid #c60309;
+	margin-bottom: 3px;
+	padding: 3px;
+	width: 280px;
+	background: #fff;
+}
+
+form#three fieldset {
+	width: 85%;
+	display: block;
+	border: 1px solid #c60309;
+	padding: 2px;
+	font-family: verdana, sans-serif;
+	margin-bottom: 0.5em;
+	line-height: 1.5em;
+}
+
+form#three .asholder {
+	position: relative;
+}
+
+a {
+	color: #000;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: none;
+	color: red;
+}
+
+#mask {
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 9000;
+	background-color: #000;
+	display: none;
+}
+
+#boxes .window {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 440px;
+	height: 300px;
+	display: none;
+	z-index: 9999;
+	border-radius: 10px;
+}
+
+#boxes #dialog {
+	background-color: #ffffff;
+	border-left: 3px solid #f87138;
+	border-right: 3px solid #f87138;
+	border-bottom: 3px solid #f87138;
+	border-top: 3px solid #f87138;
+}
+
+#boxes .title {
+	background: #f87138;
+	line-height: 30px;
+	color: #fff;
+	padding-left: 10px;
+}

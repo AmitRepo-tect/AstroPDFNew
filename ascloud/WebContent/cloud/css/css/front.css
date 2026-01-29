@@ -1,0 +1,591 @@
+#login_menu {
+	-moz-border-radius-topleft:0px;
+	-moz-border-radius-bottomleft:3px;
+	-moz-border-radius-bottomright:3px;
+	-webkit-border-top-left-radius:3px;
+	-webkit-border-bottom-left-radius:3px;
+	-webkit-border-bottom-right-radius:3px;
+	display:none;
+	background-color:#faecd1;
+	position:absolute;
+	width:180px;
+	z-index:1;
+	border:1px transparent;
+	text-align:left;
+	padding:15px;
+	padding-bottom:5px;
+	top: 16px; 
+	right: 0px; 
+	margin-top:9px;
+	margin-right: 0px;
+	*margin-right: -1px;
+	color:#789;
+	font-size:11px;
+	line-height:24px;
+	 border:0px solid #000;
+}
+
+#login_menu div {
+       font-size:12px;
+       font-weight:bold;
+       color:#333;
+}
+/*#login_menu div a.btn {
+       font-size:12px;
+       color:#333;
+       text-decoration:none;
+       padding:5px;
+       }*/
+       
+ #login_menu div a.toolbar-link {
+       font-size:9px;
+       color:#000;
+       text-decoration:none;
+       padding:5px;
+       }      
+ #login_menu div a.btn{
+       font-size:9px;
+       color:#F7EAEC;
+       text-decoration:none;
+       background:#f87138;
+       padding:5px;
+       border:1px solid transparent;
+       }  
+#login_menu div a.btn:hover{
+       font-size:9px;
+       color:#fff;
+       text-decoration:none;
+       background:#f87138;
+       padding:5px;
+       border:1px solid #762D38;
+       }       
+#login_menu div a.toolbar-link:hover{
+       font-size:9px;
+       color:#FF8000;
+       text-decoration:underline;
+       padding:5px;
+       }     
+
+
+
+
+ #login_menu div a.toolbar-link-enghindi {
+       font-size:12px;
+       color:#000;
+       text-decoration:none;
+       padding:5px;
+       }      
+ #login_menu div a.btn-enghindi{
+       font-size:12px;
+       color:#F7EAEC;
+       text-decoration:none;
+       background:#f87138;
+       padding:5px;
+       border:1px solid transparent;
+       }  
+#login_menu div a.btn-enghindi:hover{
+       font-size:12px;
+       color:#fff;
+       text-decoration:none;
+       background:#f87138;
+       padding:5px;
+       border:1px solid #762D38;
+       }       
+#login_menu div a.toolbar-link-enghindi:hover{
+       font-size:12px;
+       color:#FF8000;
+       text-decoration:underline;
+       padding:5px;
+       }    
+
+/*
+Start of EDIT CHART CSS
+*/
+#regcontainernew {
+	width:100%;
+	position:relative;
+	margin:0;
+	padding:0;	
+	}
+#topnav a.newchart {
+	background:#f87138;
+	/*padding:4px 2px 6px 2px;*/
+	padding:4px 7px 6px 7px;
+	text-decoration:none;
+	font-weight:bold;
+	color:#fff;
+	-webkit-border-radius:0px 0px 4px 4px;
+	-moz-border-radius:4px;
+	 border-radius:0px 0px 4px 4px;
+	}
+#topnav a.newchart:hover {
+	background:#faecd1;
+	-webkit-border-radius:0px 0px 4px 4px;	
+	-moz-border-radius:4px;
+	 border-radius:0px 0px 4px 4px;
+	 color:#000;
+	}
+#topnav a.newchart span:hover {	
+	background-image:url("/freekundli/images/toggle_hover_dark.png");	
+	 color:#000;
+	}
+#topnav a.newchart, #topnav a.newchart:hover {
+	*background-position:0 3px!important;
+}
+a.newchart {
+	position:relative;
+	margin-left:3px;
+}
+a.newchart span {
+	background-image:url("/freekundli/images/toggle_down_light.png");
+	background-repeat:no-repeat;
+	background-position:100% 50%;	
+	padding:4px 15px 6px 0;	
+}
+#topnav a.menu-open {
+	background:#faecd1;
+	color:#fff;
+	outline:none;
+	-webkit-border-radius:0px 0px 4px 4px;
+	-moz-border-radius:4px;
+	 border-radius:4px 4px 0px 0px;
+}
+a.newchart.menu-open span {
+	background-image:url("/freekundli/images/toggle_up_dark.png");
+	color:#000;
+}
+
+#newchart_menu {
+	-moz-border-radius-topleft:5px;
+	-moz-border-radius-bottomleft:5px;
+	-moz-border-radius-bottomright:5px;
+	-webkit-border-top-left-radius:5px;
+	-webkit-border-bottom-left-radius:5px;
+	-webkit-border-bottom-right-radius:5px;
+	display:none;
+	background-color:#faecd1;
+	position:absolute;
+	width:350px;
+	z-index:1;
+	border:1px transparent;
+	text-align:left;
+	padding:12px;
+	top: 15px; 
+	right: 0px; 
+	margin-top:9px;
+	margin-right: 0px;
+	*margin-right: -1px;
+	color:#789;
+	font-size:11px;
+}
+
+#newchart_menu input[type=text], #newchart_menu input[type=password] {
+	background: url(/freekundli/images/form.gif) repeat-x top left;
+   -moz-border-radius:4px;
+   -webkit-border-radius:4px;
+	border:1px solid #880000;
+	font-size:13px;
+	margin-bottom: 0.8em;
+	width:30px;
+	height:22px;
+	 padding-left:5px;
+	 
+}
+#newchart_menu p {
+	margin:0;
+}
+#newchart_menu a {
+	color:#6AC;
+}
+#newchart_menu label {
+	font-weight:normal;
+}
+
+#le_person{
+font-family: georgia, sans-serif;
+	font-size: 1.1em;
+	font-weight: bold;
+	border: 2px solid #c60309;
+	margin-bottom: 3px;
+	padding: 3px;
+	width: 180px;
+	background: #fff;
+}
+
+#advsetting:hover
+{
+ background-color:#f30;
+  color:#fff;
+}
+
+/* 
+End of EDIT CHART CSS
+*/
+
+
+
+/*
+Start of NEW CHART CSS
+*/
+#regcontainerss {
+	width:100%;
+	position:relative;
+	margin:0;
+	padding:0;	
+	}
+#topnav a.editchart {
+	background:#f87138;
+	/*padding:4px 2px 6px 2px;*/
+	padding:4px 7px 6px 7px;
+	text-decoration:none;
+	font-weight:bold;
+	color:#fff;
+	-webkit-border-radius:0px 0px 4px 4px;
+	-moz-border-radius:4px;
+	 border-radius:0px 0px 4px 4px;
+	}
+#topnav a.editchart:hover {
+	background:#faecd1;
+	-webkit-border-radius:0px 0px 4px 4px;	
+	-moz-border-radius:4px;
+	 border-radius:0px 0px 4px 4px;
+	 color:#000;
+	}
+#topnav a.editchart span:hover {	
+	background-image:url("/freekundli/images/toggle_hover_dark.png");	
+	 color:#000;
+	}
+#topnav a.editchart, #topnav a.editchart:hover {
+	*background-position:0 3px!important;
+}
+a.editchart {
+	position:relative;
+	margin-left:3px;
+}
+a.editchart span {
+	background-image:url("/freekundli/images/toggle_down_light.png");
+	background-repeat:no-repeat;
+	background-position:100% 50%;	
+	padding:4px 15px 6px 0;	
+}
+#topnav a.menu-open {
+	background:#faecd1;
+	color:#fff;
+	outline:none;
+	-webkit-border-radius:0px 0px 4px 4px;
+	-moz-border-radius:4px;
+	 border-radius:4px 4px 0px 0px;
+}
+a.editchart.menu-open span {
+	background-image:url("/freekundli/images/toggle_up_dark.png");
+	color:#000;
+}
+
+#editchart_menu {
+	-moz-border-radius-topleft:5px;
+	-moz-border-radius-bottomleft:5px;
+	-moz-border-radius-bottomright:5px;
+	-webkit-border-top-left-radius:5px;
+	-webkit-border-bottom-left-radius:5px;
+	-webkit-border-bottom-right-radius:5px;
+	display:none;
+	background-color:#faecd1;
+	position:absolute;
+	width:350px;
+	z-index:1;
+	border:1px transparent;
+	text-align:left;
+	padding:12px;
+	top: 15px; 
+	right: 0px; 
+	margin-top:9px;
+	margin-right: 0px;
+	*margin-right: -1px;
+	color:#789;
+	font-size:11px;
+}
+
+#editchart_menu input[type=text], #editchart_menu input[type=password] {
+	background: url(/freekundli/images/form.gif) repeat-x top left;
+   -moz-border-radius:4px;
+   -webkit-border-radius:4px;
+	border:1px solid #880000;
+	font-size:13px;
+	margin-bottom: 0.8em;
+	width:30px;
+	height:22px;
+	 padding-left:5px;
+	 
+}
+#editchart_menu p {
+	margin:0;
+}
+#editchart_menu a {
+	color:#6AC;
+}
+#editchart_menu label {
+	font-weight:normal;
+}
+#editchart_menu p.remember {
+	padding:10px 0;
+}
+
+#editchart_menu p a {
+	color:#27B!important;
+}
+#le_person{
+font-family: georgia, sans-serif;
+	font-size: 1.1em;
+	font-weight: bold;
+	border: 2px solid #c60309;
+	margin-bottom: 3px;
+	padding: 3px;
+	width: 180px;
+	background: #fff;
+}
+
+#advsetting:hover
+{
+ background-color:#f30;
+  color:#fff;
+}
+
+/* 
+End of NEW CHART CSS
+*/
+
+/*
+Start of LANGUAGE OPTION CSS
+*/
+#regcontainerlang {
+	width:100%;
+	position:relative;
+	margin:0;
+	padding:0;	
+	}
+#topnav a.lang {
+	background:#f87138;
+	/*padding:4px 2px 6px 2px;*/
+	padding:4px 7px 6px 7px;
+	text-decoration:none;
+	font-weight:bold;
+	color:#fff;
+	-webkit-border-radius:0px 0px 4px 4px;
+	-moz-border-radius:4px;
+	 border-radius:0px 0px 4px 4px;
+	}
+#topnav a.lang:hover {
+	background:#faecd1;
+	-webkit-border-radius:0px 0px 4px 4px;	
+	-moz-border-radius:4px;
+	 border-radius:0px 0px 4px 4px;
+	 color:#000;
+	}
+#topnav a.lang span:hover {	
+	background-image:url("/freekundli/images/toggle_hover_dark.png");	
+	 color:#000;
+	}
+#topnav a.lang, #topnav a.lang:hover {
+	*background-position:0 3px!important;
+}
+
+a.lang {
+	position:relative;
+	margin-left:3px;
+}
+a.lang span {
+	background-image:url("/freekundli/images/toggle_down_light.png");
+	background-repeat:no-repeat;
+	background-position:100% 50%;	
+	padding:4px 15px 6px 0;	
+}
+#topnav a.menu-open {
+	background:#faecd1;
+	color:#fff;
+	outline:none;
+	-webkit-border-radius:0px 0px 4px 4px;
+	-moz-border-radius:4px;
+	 border-radius:4px 4px 0px 0px;
+}
+a.lang.menu-open span {
+	background-image:url("/freekundli/images/toggle_up_dark.png");
+	color:#000;
+}
+
+#lang_menu {
+	-moz-border-radius-topleft:5px;
+	-moz-border-radius-bottomleft:5px;
+	-moz-border-radius-bottomright:5px;
+	-webkit-border-top-left-radius:5px;
+	-webkit-border-bottom-left-radius:5px;
+	-webkit-border-bottom-right-radius:5px;
+	display:none;
+	background-color:#faecd1;
+	position:absolute;
+	width:110px;
+	z-index:1;
+	border:1px transparent;
+	text-align:left;
+	padding:0px;
+	padding-top:12px;
+	padding-bottom:12px;
+	top: 15px; 
+	right: 0px; 
+	margin-top:9px;
+	margin-right: 0px;
+	*margin-right: -1px;
+	color:#789;
+	font-size:11px;
+}
+
+#lang_menu ul{
+	height:50px;
+	list-style:none;
+	margin:0;
+	padding:0;
+    
+	}
+#lang_menu li a{
+	color:#000;
+	display:block;
+	font-weight:bold;
+	font-family:Arial;
+	font-size:13px;
+	line-height:28px;
+	margin:0px;
+	/*padding:0px 16px;*/
+	padding-left:12px;
+    padding-right:12px;
+	text-align:left;
+	text-decoration:underline;
+	
+	}
+#lang_menu li a:hover, #lang_menu ul li:hover a{
+	background: #F28136 ;
+	color:#fff;
+	text-decoration:underline;
+	}
+/* 
+End of LANGUAGE OPTION CSS
+*/
+
+
+/*
+Start of CHART TYPE CSS
+*/
+#regcontainerchart {
+	width:100%;
+	position:relative;
+	margin:0;
+	padding:0;	
+	}
+
+#topnav a.charttype {
+	background:#f87138;
+	/*padding:4px 2px 6px 2px;*/
+	padding:4px 7px 6px 7px;
+	text-decoration:none;
+	font-weight:bold;
+	color:#fff;
+	-webkit-border-radius:0px 0px 4px 4px;
+	-moz-border-radius:4px;
+	 border-radius:0px 0px 4px 4px;
+	}
+#topnav a.charttype:hover {
+	background:#faecd1;
+	-webkit-border-radius:0px 0px 4px 4px;	
+	-moz-border-radius:4px;
+	 border-radius:0px 0px 4px 4px;
+	 color:#000;
+	}
+#topnav a.charttype span:hover {	
+	background-image:url("/freekundli/images/toggle_hover_dark.png");	
+	 color:#000;
+	}
+#topnav a.charttype, #topnav a.charttype:hover {
+	*background-position:0 3px!important;
+}
+
+a.charttype {
+	position:relative;
+	margin-left:3px;
+}
+a.charttype span {
+	background-image:url("/freekundli/images/toggle_down_light.png");
+	background-repeat:no-repeat;
+	background-position:100% 50%;	
+	padding:4px 15px 6px 0;	
+}
+#topnav a.menu-open {
+	background:#faecd1;
+	color:#fff;
+	outline:none;
+	-webkit-border-radius:0px 0px 4px 4px;
+	-moz-border-radius:4px;
+	 border-radius:4px 4px 0px 0px;
+}
+a.charttype.menu-open span {
+	background-image:url("/freekundli/images/toggle_up_dark.png");
+	color:#000;
+}
+
+#chart_menu {
+	-moz-border-radius-topleft:5px;
+	-moz-border-radius-bottomleft:5px;
+	-moz-border-radius-bottomright:5px;
+	-webkit-border-top-left-radius:5px;
+	-webkit-border-bottom-left-radius:5px;
+	-webkit-border-bottom-right-radius:5px;
+	display:none;
+	background-color:#faecd1;
+	position:absolute;
+	width:110px;
+	z-index:1;
+	border:1px transparent;
+	text-align:left;
+	padding:0px;
+	padding-top:12px;
+	padding-bottom:12px;
+	top: 15px; 
+	right: 0px; 
+	margin-top:9px;
+	margin-right: 0px;
+	*margin-right: -1px;
+	color:#789;
+	font-size:11px;
+}
+
+
+#chart_menu ul{
+	height:50px;
+	list-style:none;
+	margin:0;
+	padding:0;
+    
+	}
+#chart_menu li a{
+	color:#000;
+	display:block;
+	font-weight:bold;
+	font-family:Arial;
+	font-size:13px;
+	line-height:28px;
+	margin:0px;
+	/*padding:0px 16px;*/
+	padding-left:12px;
+    padding-right:12px;
+	text-align:left;
+	text-decoration:underline;
+	
+	}
+#chart_menu li a:hover, #chart_menu ul li:hover a{
+	background: #F28136 ;
+	color:#fff;
+	text-decoration:underline;
+	}
+
+
+
+/* 
+End of CHART TYPE CSS
+*/

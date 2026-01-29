@@ -1,0 +1,480 @@
+package com.ojassoft.astrosagecloud.api;
+
+import java.util.ArrayList;
+
+import com.cslsoftware.desktophoro.DesktopHoro;
+import com.cslsoftware.util.Constants;
+
+/**
+ * @author punit
+ *
+ */
+/**
+ * @author punit
+ *
+ */
+public class Dasa extends DesktopHoro {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Constants const1 = new Constants();
+		const1.setConstPath(System.getProperty("user.dir"));
+		//System.out.println("started");
+		//ph.initialize();
+		try {
+			
+			//for (int i = 1900; i < 2001; i++) {setDegreeOfLongitude
+
+			Dasa phoro = new Dasa();
+		
+			phoro.setCompanyName("CSL SOFTWARE LTD., G-4A, Green park Extn., New Delhi-110 016");
+			phoro.setCompanyAddLine1("Phone:011-6867329, 9811356741, E-Mail: info@astrocamp.com http://www.astrocamp.com");
+			phoro.setName("punit");
+			phoro.setPlace("agra");
+			phoro.setTimeZone("5.5");
+			phoro.setMaleFemale("M");
+			phoro.setSecondOfBirth("00");
+			phoro.setMinuteOfBirth("23");
+			phoro.setHourOfBirth("18");
+			phoro.setDayOfBirth("11");
+			phoro.setMonthOfBirth("4");
+			phoro.setYearOfBirth("1979");
+			phoro.setDegreeOfLattitude("27");
+			phoro.setDegreeOfLongitude("78");
+			phoro.setSecondOfLattitude("00");
+			phoro.setSecondOfLongitude("00");
+			phoro.setMinuteOfLongitude("19");
+			phoro.setMinuteOfLattitude("27");
+			phoro.setEastWest("E");
+			phoro.setNorthSouth("N");
+			phoro.setLanguageCode("0");
+			phoro.setDST("0");
+			phoro.setAyanamsaType(1);
+			//phoro.setAyanamsaType(3);
+			phoro.setLanguageCode("0");
+			phoro.initialize();
+			//ArrayList<Pdasa> m2Array = phoro.getVimsottariPDasaArray(); //for pratyantardasa
+			ArrayList<Pdasa> m2Array = phoro.getVimsottariADasaArray(); //for antardasa
+			
+			String[] grahk = phoro.getSthirGrahaForkaraka();
+			System.out.println(grahk[0]+","+phoro.getSthirGrahaForkaraka());
+			for (Pdasa pdasa : m2Array) {
+				System.out.println(pdasa);
+			}
+			
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			for (int j=0; j<100000; j++){
+				for (int k=0; k<100000; k++);
+			}
+		}
+		
+		
+		
+	}
+
+	
+	public ArrayList<Pdasa> getVimsottariPDasaArray() {
+		int xValue = -1, yValue = -1, zValue = -1;
+		ArrayList<Pdasa> m2Array = new ArrayList<Pdasa>();
+		double d2 = this.getDayOfBirth();
+		int day = (int) d2;
+		double m2 = this.getMonthOfBirth();
+		int month = (int) m2;
+		double y2 = this.getYearOfBirth();
+		double m3;
+		double d0, n0, p0, e0;
+		double t0;
+		///StringBuffer sb3 = new StringBuffer();
+		///String date = utilDesktop.ymd((int) y2, (int) m2, (int) d2);
+		///String date1 = "";
+		int q, d, e, n, g, p, r, t, f;
+		boolean shouldPrint = false;
+		d0 = plnt[2];
+		d0 = 9.0 * utilDesktop.fract(d0 / 120); 
+		n0 = utilDesktop.fract(d0);
+		q = (int) d0; // balance of dasa planet
+		p0 = n0 * y1[q]; //bhayat
+		d2 = y2 + m2 / 12 + d2 / 360; //birth date in decimal
+		e0 = d2 + 75.0;
+		m2 = d2 - p0; //first dasa ending
+		t0 = m2;
+		m3 = m2;
+		///StringBuffer sb = new StringBuffer();
+		line = 20;
+		//e0=0;
+		for (c = q; c <= q + 8; c++) { // for each mahadasha
+			xValue++;
+			if (c > 8)
+				c -= 9;
+			for (d = 0; d <= 8; d++) { // for each bhukti
+				yValue++;
+				zValue = 0;
+				n = c + d;
+				if (n > 8)
+					n -= 9;
+				t0 += y1[c] * y1[n] / 120;
+//				p = (int) t0; //date
+				r = (int) (12 * utilDesktop.fract(t0));
+				int s0 = r; //month
+//				t = (int) (30 * utilDesktop.fract(12 * utilDesktop.fract(t0)) + 1); //days
+//				if (r == 0) {
+//					p--;
+//					r = 12;
+//				} else
+//					if (r == 2 && t > 28) {
+//						t -= 28;
+//						r = 3;
+//					}
+				///date1 = utilDesktop.ymd(p, r, t);
+				for (e = 0; e <= 8; e++) { // for each antardasha
+
+					g = n + e;
+					if (g > 8)
+						g -= 9;
+					double oldm2=m2;
+					m2 += y1[c] * y1[n] * y1[g] / 14400;
+					m3 += y1[c] * y1[n] / 120;
+					if (t0 < y2) {
+						continue;
+					} else {
+						if ((int) t0 == (int) y2 && s0 < m2) {
+							continue;
+						} //else {
+						//if (s0 == m2 && day < d2) {
+						//	continue;
+						//}
+						//	}
+					}
+					/*
+					if (e == 0) {
+						sb.append(utilDesktop.getDasaEndsTerminator() + utilDesktop.getDashString(11) + "\n");
+						sb.append(x9[c] + " " + utilDesktop.getDashString(2) + " " + " " + x9[n] + "\n");
+						sb.append(utilDesktop.getDashString(12) + "\n");
+						sb.append("  " + date + "\n");
+						sb.append("  " + date1 + "\n");
+						sb.append(utilDesktop.getDashString(12));
+						sb.append("\n");
+					}
+					*/
+					
+					Pdasa pdasa = new Pdasa(c, n, g, oldm2, m2);
+					m2Array.add(pdasa);
+
+//					p = (int) m2;
+//					r = (int) (12 * utilDesktop.fract(m2));
+//					t = (int) (30 * utilDesktop.fract(12 * utilDesktop.fract(m2)) + 1);
+//					if (r == 0) {
+//						p--;
+//						r = 12;
+//					} else
+//						if (r == 2 && t > 28) {
+//							t -= 28;
+//							r = 3;
+//						}
+					/*
+					date = utilDesktop.ymd(p, r, t);
+					if (p > y2) {
+						sb.append(x9[g] + " " + date + "\n");
+						pratayentarDasa[xValue][yValue][zValue] = x9[g] + " " + date;
+					} else
+						if (p < y2) {
+							sb.append(x9[g] + " " + "00" + utilDesktop.getSlashString() + "00" + utilDesktop.getSlashString() + "00" + "\n");
+						} else {
+							if (p == y2 && r > month) {
+								sb.append(x9[g] + " " + date + "\n");
+								pratayentarDasa[xValue][yValue][zValue] = x9[g] + " " + date;
+							} else {
+								if (r == month) {
+									if (t < day) {
+										sb.append(x9[g] + " " + "00" + utilDesktop.getSlashString() + "00" + utilDesktop.getSlashString() + "00" + "\n");
+									} else {
+										sb.append(x9[g] + " " + date + "\n");
+										pratayentarDasa[xValue][yValue][zValue] = x9[g] + " " + date;
+									}
+								} else {
+									sb.append(x9[g] + " " + "00" + utilDesktop.getSlashString() + "00" + utilDesktop.getSlashString() + "00" + "\n");
+								}
+							}
+						}
+					zValue++;
+					*/
+				}
+			}
+			f = c + 1;
+			if (f > 8)
+				f -= 9;
+			//sb.append("\n");
+			if (m2 > e0)
+				break;
+			yValue = -1;
+		}
+		return m2Array;
+	}
+
+	
+	public ArrayList<Pdasa> getVimsottariADasaArray() {
+		int xValue = -1, yValue = -1, zValue = -1;
+		//ArrayList<Pdasa> m2Array = new ArrayList<Pdasa>();
+		ArrayList<Pdasa> aArray = new ArrayList<Pdasa>();
+		double d2 = this.getDayOfBirth();
+		int day = (int) d2;
+		double m2 = this.getMonthOfBirth();
+		int month = (int) m2;
+		double y2 = this.getYearOfBirth();
+		double m3;
+		double d0, n0, p0, e0;
+		double t0;
+		///StringBuffer sb3 = new StringBuffer();
+		///String date = utilDesktop.ymd((int) y2, (int) m2, (int) d2);
+		///String date1 = "";
+		int q, d, e, n, g, p, r, t, f;
+		boolean shouldPrint = false;
+		d0 = plnt[2];
+		d0 = 9.0 * utilDesktop.fract(d0 / 120); 
+		n0 = utilDesktop.fract(d0);
+		q = (int) d0; // balance of dasa planet
+		p0 = n0 * y1[q]; //bhayat
+		d2 = y2 + m2 / 12 + d2 / 360; //birth date in decimal
+		e0 = d2 + 75.0;
+		m2 = d2 - p0; //first dasa ending
+		t0 = m2;
+		m3 = m2;
+		///StringBuffer sb = new StringBuffer();
+		line = 20;
+		//e0=0;
+		for (c = q; c <= q + 8; c++) { // for each mahadasha
+			xValue++;
+			if (c > 8)
+				c -= 9;
+			for (d = 0; d <= 8; d++) { // for each bhukti
+				yValue++;
+				zValue = 0;
+				n = c + d;
+				if (n > 8)
+					n -= 9;
+				double oldt0 = t0;
+				t0 += y1[c] * y1[n] / 120;
+				Pdasa pdasa = new Pdasa(c, n, -1, oldt0, t0);
+				aArray.add(pdasa);
+//				p = (int) t0; //date
+				r = (int) (12 * utilDesktop.fract(t0));
+				int s0 = r; //month
+//				t = (int) (30 * utilDesktop.fract(12 * utilDesktop.fract(t0)) + 1); //days
+//				if (r == 0) {
+//					p--;
+//					r = 12;
+//				} else
+//					if (r == 2 && t > 28) {
+//						t -= 28;
+//						r = 3;
+//					}
+				///date1 = utilDesktop.ymd(p, r, t);
+				for (e = 0; e <= 8; e++) { // for each antardasha
+
+					g = n + e;
+					if (g > 8)
+						g -= 9;
+					m2 += y1[c] * y1[n] * y1[g] / 14400;
+					m3 += y1[c] * y1[n] / 120;
+					if (t0 < y2) {
+						continue;
+					} else {
+						if ((int) t0 == (int) y2 && s0 < m2) {
+							continue;
+						} //else {
+						//if (s0 == m2 && day < d2) {
+						//	continue;
+						//}
+						//	}
+					}
+					/*
+					if (e == 0) {
+						sb.append(utilDesktop.getDasaEndsTerminator() + utilDesktop.getDashString(11) + "\n");
+						sb.append(x9[c] + " " + utilDesktop.getDashString(2) + " " + " " + x9[n] + "\n");
+						sb.append(utilDesktop.getDashString(12) + "\n");
+						sb.append("  " + date + "\n");
+						sb.append("  " + date1 + "\n");
+						sb.append(utilDesktop.getDashString(12));
+						sb.append("\n");
+					}
+					*/
+					
+//					Pdasa pdasa = new Pdasa(c, n, g, m2);
+//					m2Array.add(pdasa);
+
+//					p = (int) m2;
+//					r = (int) (12 * utilDesktop.fract(m2));
+//					t = (int) (30 * utilDesktop.fract(12 * utilDesktop.fract(m2)) + 1);
+//					if (r == 0) {
+//						p--;
+//						r = 12;
+//					} else
+//						if (r == 2 && t > 28) {
+//							t -= 28;
+//							r = 3;
+//						}
+					/*
+					date = utilDesktop.ymd(p, r, t);
+					if (p > y2) {
+						sb.append(x9[g] + " " + date + "\n");
+						pratayentarDasa[xValue][yValue][zValue] = x9[g] + " " + date;
+					} else
+						if (p < y2) {
+							sb.append(x9[g] + " " + "00" + utilDesktop.getSlashString() + "00" + utilDesktop.getSlashString() + "00" + "\n");
+						} else {
+							if (p == y2 && r > month) {
+								sb.append(x9[g] + " " + date + "\n");
+								pratayentarDasa[xValue][yValue][zValue] = x9[g] + " " + date;
+							} else {
+								if (r == month) {
+									if (t < day) {
+										sb.append(x9[g] + " " + "00" + utilDesktop.getSlashString() + "00" + utilDesktop.getSlashString() + "00" + "\n");
+									} else {
+										sb.append(x9[g] + " " + date + "\n");
+										pratayentarDasa[xValue][yValue][zValue] = x9[g] + " " + date;
+									}
+								} else {
+									sb.append(x9[g] + " " + "00" + utilDesktop.getSlashString() + "00" + utilDesktop.getSlashString() + "00" + "\n");
+								}
+							}
+						}
+					zValue++;
+					*/
+				}
+			}
+			f = c + 1;
+			if (f > 8)
+				f -= 9;
+			//sb.append("\n");
+			if (m2 > e0)
+				break;
+			yValue = -1;
+		}
+		return aArray;
+	}
+	
+	
+	/**
+	 * Creates DesktopHoro object
+	 * @param name
+	 * @param day
+	 * @param month
+	 * @param year
+	 * @param hrs
+	 * @param min
+	 * @param sec
+	 * @param latDeg
+	 * @param latMin
+	 * @param latNS
+	 * @param longDeg
+	 * @param longMin
+	 * @param longEW
+	 * @param timeZone
+	 * @return
+	 */
+	public static Dasa createHoro(String name, String day, String month, String year, String hrs, String min, String sec, String latDeg, String latMin, String latNS, String longDeg, String longMin, String longEW, String timeZone,String path) {
+
+		Constants const1 = new Constants();
+		const1.setConstPath(path);
+
+		Dasa phoro = new Dasa();
+		
+		try {
+
+			phoro.setCompanyName("CSL SOFTWARE LTD., G-4A, Green park Extn., New Delhi-110 016");
+			phoro.setCompanyAddLine1("Phone:011-6867329, 9811356741, E-Mail: info@astrocamp.com http://www.astrocamp.com");
+			phoro.setName(name);
+			phoro.setPlace("agra");
+			phoro.setTimeZone(timeZone);
+			phoro.setMaleFemale("M");
+			phoro.setSecondOfBirth(sec);
+			phoro.setMinuteOfBirth(min);
+			phoro.setHourOfBirth(hrs);
+			phoro.setDayOfBirth(day);
+			phoro.setMonthOfBirth(month);
+			phoro.setYearOfBirth(year);
+			phoro.setDegreeOfLattitude(latDeg);
+			phoro.setDegreeOfLongitude(longDeg);
+			phoro.setSecondOfLattitude("00");
+			phoro.setSecondOfLongitude("00");
+			phoro.setMinuteOfLongitude(longMin);
+			phoro.setMinuteOfLattitude(latMin);
+			phoro.setEastWest(longEW);
+			phoro.setNorthSouth(latNS);
+			phoro.setLanguageCode("0");
+			phoro.setDST("0");
+			phoro.setAyanamsaType(1);
+			// phoro.setAyanamsaType(3);
+			phoro.setLanguageCode("0");
+			// phoro.setCustomizedAyanamsa("23.000");
+			phoro.initialize();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+
+		return phoro;
+		
+	}	
+	
+	
+	public class Pdasa {
+		int mdasa;
+		int adasa;
+		int pdasa;
+		double pdasaStartDate;
+		double pdasaEndDate;
+		
+		//protected String x9[] = new String[9];
+		protected String x9[] = {"Ketu   ", "Venus  ", "Sun    ", "Moon   ", "Mars   ", "Rahu   ", "Jupiter", "Saturn ", "Mercury"}; 
+		
+		Pdasa(int mdasa,int adasa,int pdasa,double pdasaStartDate,double pdasaEndDate) {
+			this.mdasa = mdasa;
+			this.adasa=adasa;
+			this.pdasa =pdasa;
+			this.pdasaStartDate=pdasaStartDate;
+			this.pdasaEndDate=pdasaEndDate;
+		}
+		public int getMdasa() {
+			return this.mdasa;
+		}
+		public int getAdasa() {
+			return this.adasa;
+		}
+		public int getPdasa() {
+			return this.pdasa;
+		}
+		public double getPdasaStartDate() {
+			return this.pdasaStartDate;
+		}
+		public double getPdasaEndDate() {
+			return this.pdasaEndDate;
+		}
+		public String toString() {
+			//return mdasa + "-" + adasa + "-" + pdasa + ": " + pdasaEndDate;
+			if (pdasa != -1)
+				return x9[mdasa] + "-" + x9[adasa] + "-" + x9[pdasa] + ": " + doubleToDate(pdasaStartDate) + "-" + doubleToDate(pdasaEndDate);
+			else
+				return x9[mdasa] + "-" + x9[adasa] + ": " + doubleToDate(pdasaStartDate) + "-" + doubleToDate(pdasaEndDate);
+		}
+		public String doubleToDate(double m2) {
+			int p = (int) m2;
+			int r = (int) (12 * utilDesktop.fract(m2));
+			int t = (int) (30 * utilDesktop.fract(12 * utilDesktop.fract(m2)) + 1);
+			if (r == 0) {
+				p--;
+				r = 12;
+			} else
+				if (r == 2 && t > 28) {
+					t -= 28;
+					r = 3;
+				}
+			String date = utilDesktop.ymd(p, r, t);
+			return date;
+		}
+	}
+	
+
+
+}

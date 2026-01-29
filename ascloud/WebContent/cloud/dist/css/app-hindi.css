@@ -1,0 +1,7 @@
+
+.calculaton .hgt-box {min-height:170px;}
+
+@media screen and (max-width: 768px) {
+.calculaton .hgt-box {min-height:120px;}
+.user-define .full-width {min-height:120px;}
+}

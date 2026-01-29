@@ -1,0 +1,392 @@
+/*
+#Author: Vijay Pathak
+*/
+.ui-button-order {
+	text-align: CENTER;
+	color: #000;
+	line-height: 32px;
+	float: right;
+	margin: 0px 2px 2px 0px;
+}
+
+.ui-button-order a {
+	padding: 0 15px 0 15px;
+	margin: 1px;
+	box-shadow: 0px 0px 1px #000;
+	color: #fff;
+	font-size: 13px;
+	font-family: Verdana;
+	font-weight: bold;
+}
+
+.ui-button-global {
+	text-align: CENTER;
+	color: #000;
+	line-height: 32px;
+	margin: 0px 2px 2px 0px;
+}
+
+.ui-button-global a {
+	padding: 0 15px 0 15px;
+	margin: 1px;
+	box-shadow: 0px 0px 1px #000;
+	color: #fff;
+	font-size: 13px;
+	font-family: Verdana;
+	font-weight: bold;
+}
+
+.ui-button {
+	position: relative;
+	overflow: visible;
+	display: inline-block;
+	padding: .5em 1em;
+	border: 0px solid #ef6921;
+	margin: 0;
+	text-decoration: none;
+	text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.3);
+	white-space: nowrap;
+	cursor: pointer;
+	outline: 0;
+	color: #fff;
+	text-shadow: 1px 1px 0 #000;
+	background-color: #da4a03;
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#da4a03),
+		to(#8e3103));
+	background-image: -moz-linear-gradient(#da4a03, #8e3103);
+	background-image: -o-linear-gradient(#da4a03, #8e3103);
+	background-image: linear-gradient(#da4a03, #8e3103)
+		-webkit-background-clip:padding;
+	-moz-background-clip: padding;
+	-o-background-clip: padding-box;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	zoom: 1;
+	*display: inline
+}
+
+.ui-button:hover, .ui-button:focus, .ui-button:active {
+	border-color: #c64606;
+	border-bottom-color: #c64606;
+	text-decoration: none;
+	text-shadow: 1px 1px 0 #000;
+	color: #fff;
+	background-color: #802c03;
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#c64606),
+		to(#802c03));
+	background-image: -moz-linear-gradient(#c64606, #802c03);
+	background-image: -o-linear-gradient(#c64606, #802c03);
+	background-image: linear-gradient(#c64606, #802c03);
+}
+
+.ui-button:active, .ui-button.active {
+	border-color: #e82404;
+	border-bottom-color: #e82404;
+	text-decoration: none;
+	text-shadow: 1px 1px 0 #000;
+	color: #fff;
+	background-color: #ac1c05;
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#e82404),
+		to(#ac1c05));
+	background-image: -moz-linear-gradient(#e82404, #ac1c05);
+	background-image: -o-linear-gradient(#e82404, #ac1c05);
+	background-image: linear-gradient(#e82404, #ac1c05);
+}
+
+.ui-button::-moz-focus-inner {
+	padding: 0;
+	border: 0;
+}
+
+.ui-button.icon:before {
+	content: "";
+	position: relative;
+	top: 6px;
+	float: left;
+	width: 21px;
+	height: 21px;
+	margin: 0 .75em 0 -0.25em;
+	background: url(/images/gh-icons.png) 0 99px no-repeat;
+}
+
+.ui-button.arrowup.icon:before {
+	background-position: 0 0;
+}
+
+.ui-button.arrowup.icon:hover:before, .ui-button.arrowup.icon:focus:before,
+	.ui-button.arrowup.icon:active:before {
+	background-position: -12px 0;
+}
+
+.ui-button.arrowdown.icon:before {
+	background-position: 0 -12px;
+}
+
+.ui-button.arrowdown.icon:hover:before, .ui-button.arrowdown.icon:focus:before,
+	.ui-button.arrowdown.icon:active:before {
+	background-position: -12px -12px;
+}
+
+.ui-button.arrowleft.icon:before {
+	background-position: -21px -21px;
+}
+
+.ui-button.arrowleft.icon:hover:before, .ui-button.arrowleft.icon:focus:before,
+	.ui-button.arrowleft.icon:active:before {
+	background-position: 0 -21px;
+}
+
+.ui-button.arrowright.icon:before {
+	float: right;
+	margin: 0 -0.25em 0 .5em;
+	background-position: -21px 0px;
+}
+
+.ui-button.arrowright.icon:hover:before, .ui-button.arrowright.icon:focus:before,
+	.ui-button.arrowright.icon:active:before {
+	background-position: 0px 0px;
+}
+
+.ui-button.approve.icon:before {
+	background-position: 0 -48px;
+}
+
+.ui-button.approve.icon:hover:before, .ui-button.approve.icon:focus:before,
+	.ui-button.approve.icon:active:before {
+	background-position: -12px -48px;
+}
+
+.ui-button.add.icon:before {
+	background-position: 0 -288px;
+}
+
+.ui-button.add.icon:hover:before, .ui-button.add.icon:focus:before,
+	.ui-button.add.icon:active:before {
+	background-position: -12px -288px;
+}
+
+.ui-button.remove.icon:before {
+	background-position: 0 -60px;
+}
+
+.ui-button.remove.icon:hover:before, .ui-button.remove.icon:focus:before,
+	.ui-button.remove.icon:active:before {
+	background-position: -12px -60px;
+}
+
+.ui-button.log.icon:before {
+	background-position: 0 -72px;
+}
+
+.ui-button.log.icon:hover:before, .ui-button.log.icon:focus:before,
+	.ui-button.log.icon:active:before {
+	background-position: -12px -72px;
+}
+
+.ui-button.calendar.icon:before {
+	background-position: 0 -84px;
+}
+
+.ui-button.calendar.icon:hover:before, .ui-button.calendar.icon:focus:before,
+	.ui-button.calendar.icon:active:before {
+	background-position: -12px -84px;
+}
+
+.ui-button.chat.icon:before {
+	background-position: 0 -96px;
+}
+
+.ui-button.chat.icon:hover:before, .ui-button.chat.icon:focus:before,
+	.ui-button.chat.icon:active:before {
+	background-position: -12px -96px;
+}
+
+.ui-button.clock.icon:before {
+	background-position: 0 -108px;
+}
+
+.ui-button.clock.icon:hover:before, .ui-button.clock.icon:focus:before,
+	.ui-button.clock.icon:active:before {
+	background-position: -12px -108px;
+}
+
+.ui-button.settings.icon:before {
+	background-position: 0 -120px;
+}
+
+.ui-button.settings.icon:hover:before, .ui-button.settings.icon:focus:before,
+	.ui-button.settings.icon:active:before {
+	background-position: -12px -120px;
+}
+
+.ui-button.comment.icon:before {
+	background-position: 0 -132px;
+}
+
+.ui-button.comment.icon:hover:before, .ui-button.comment.icon:focus:before,
+	.ui-button.comment.icon:active:before {
+	background-position: -12px -132px;
+}
+
+.ui-button.fork.icon:before {
+	background-position: 0 -144px;
+}
+
+.ui-button.fork.icon:hover:before, .ui-button.fork.icon:focus:before,
+	.ui-button.fork.icon:active:before {
+	background-position: -12px -144px;
+}
+
+.ui-button.like.icon:before {
+	background-position: 0 -156px;
+}
+
+.ui-button.like.icon:hover:before, .ui-button.like.icon:focus:before,
+	.ui-button.like.icon:active:before {
+	background-position: -12px -156px;
+}
+
+.ui-button.favorite.icon:before {
+	background-position: 0 -348px;
+}
+
+.ui-button.favorite.icon:hover:before, .ui-button.favorite.icon:focus:before,
+	.ui-button.favorite.icon:active:before {
+	background-position: -12px -348px;
+}
+
+.ui-button.home.icon:before {
+	background-position: 0 -168px;
+}
+
+.ui-button.home.icon:hover:before, .ui-button.home.icon:focus:before,
+	.ui-button.home.icon:active:before {
+	background-position: -12px -168px;
+}
+
+.ui-button.key.icon:before {
+	background-position: 0 -180px;
+}
+
+.ui-button.key.icon:hover:before, .ui-button.key.icon:focus:before,
+	.ui-button.key.icon:active:before {
+	background-position: -12px -180px;
+}
+
+.ui-button.lock.icon:before {
+	background-position: 0 -192px;
+}
+
+.ui-button.lock.icon:hover:before, .ui-button.lock.icon:focus:before,
+	.ui-button.lock.icon:active:before {
+	background-position: -12px -192px;
+}
+
+.ui-button.unlock.icon:before {
+	background-position: 0 -204px;
+}
+
+.ui-button.unlock.icon:hover:before, .ui-button.unlock.icon:focus:before,
+	.ui-button.unlock.icon:active:before {
+	background-position: -12px -204px;
+}
+
+.ui-button.loop.icon:before {
+	background-position: 0 -216px;
+}
+
+.ui-button.loop.icon:hover:before, .ui-button.loop.icon:focus:before,
+	.ui-button.loop.icon:active:before {
+	background-position: -12px -216px;
+}
+
+.ui-button.search.icon:before {
+	background-position: 0 -228px;
+}
+
+.ui-button.search.icon:hover:before, .ui-button.search.icon:focus:before,
+	.ui-button.search.icon:active:before {
+	background-position: -12px -228px;
+}
+
+.ui-button.mail.icon:before {
+	background-position: 0 -240px;
+}
+
+.ui-button.mail.icon:hover:before, .ui-button.mail.icon:focus:before,
+	.ui-button.mail.icon:active:before {
+	background-position: -12px -240px;
+}
+
+.ui-button.move.icon:before {
+	background-position: 0 -252px;
+}
+
+.ui-button.move.icon:hover:before, .ui-button.move.icon:focus:before,
+	.ui-button.move.icon:active:before {
+	background-position: -12px -252px;
+}
+
+.ui-button.edit.icon:before {
+	background-position: 0 -264px;
+}
+
+.ui-button.edit.icon:hover:before, .ui-button.edit.icon:focus:before,
+	.ui-button.edit.icon:active:before {
+	background-position: -12px -264px;
+}
+
+.ui-button.pin.icon:before {
+	background-position: 0 -276px;
+}
+
+.ui-button.pin.icon:hover:before, .ui-button.pin.icon:focus:before,
+	.ui-button.pin.icon:active:before {
+	background-position: -12px -276px;
+}
+
+.ui-button.reload.icon:before {
+	background-position: 0 -300px;
+}
+
+.ui-button.reload.icon:hover:before, .ui-button.reload.icon:focus:before,
+	.ui-button.reload.icon:active:before {
+	background-position: -12px -300px;
+}
+
+.ui-button.rss.icon:before {
+	background-position: 0 -312px;
+}
+
+.ui-button.rss.icon:hover:before, .ui-button.rss.icon:focus:before,
+	.ui-button.rss.icon:active:before {
+	background-position: -12px -312px;
+}
+
+.ui-button.tag.icon:before {
+	background-position: 0 -324px;
+}
+
+.ui-button.tag.icon:hover:before, .ui-button.tag.icon:focus:before,
+	.ui-button.tag.icon:active:before {
+	background-position: -12px -324px;
+}
+
+.ui-button.trash.icon:before {
+	background-position: 0 -336px;
+}
+
+.ui-button.trash.icon:hover:before, .ui-button.trash.icon:focus:before,
+	.ui-button.trash.icon:active:before {
+	background-position: -12px -336px;
+}
+
+.ui-button.user.icon:before {
+	background-position: 0 -360px;
+}
+
+.ui-button.user.icon:hover:before, .ui-button.user.icon:focus:before,
+	.ui-button.user.icon:active:before {
+	background-position: -12px -360px;
+}

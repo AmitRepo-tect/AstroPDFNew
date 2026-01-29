@@ -1,0 +1,19 @@
+<!--include virtual = "/aw/mt_head.inc"-->
+<br/>
+Kundali: <a href = "/m/j_lagnapage.asp">Basic</a> | 
+<a href = "/m/j_kppage.asp">KP</a> | 
+<!--<a href = "/m/lagnachart.jsp">Lagna Chart</a> | -->
+<a href = "/m/lalkitab.asp">Lal Kitab</a> | 
+<a href = "/m/new_charantardasha-1.asp">Char Dasa 1</a> | 
+<a href = "/m/new_charantardasha-2.asp">Char Dasa 2</a> | 
+<a href = "/m/new_yoginidasha-1.asp">Yogini Dasa 1</a> | 
+<a href = "/m/new_yoginidasha-2.asp">Yogini Dasa 2</a> | 
+<a href = "/m/newfriendship.asp">Friendship</a> | 
+<a href = "/m/newprastharashtakvarga.asp">Prastar-ashtakvarga</a> | 
+<a href = "/m/new_prediction1.asp">General Predictions</a> | 
+<a href = "/m/new_varshphalallpages.asp">Varshaphal</a> | 
+<a href = "/m/new_lalkitabvarshaphal.asp">LalKitab Varshaphal</a> | 
+<a href = "/m/new_shodashvargatable.asp">Shodashvarga Table </a> | 
+<a href = "/m/new_shodashvargacharts.asp">Shodashvarga Charts </a> | 
+<a href = "http://www.astrosage.com/m/feedback.asp">FeedBack</a><br />
+<%@include file='i_footerhome.jsp'%>

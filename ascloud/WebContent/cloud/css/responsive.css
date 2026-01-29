@@ -1,0 +1,346 @@
+@charset "utf-8";
+/* CSS Document */
+
+@media only screen and (max-width: 1290px) {
+    .full-body {
+        float: left;
+        overflow-x: hidden;
+        width: 100%;
+    }
+}
+@media only screen and (max-width: 1230px) {
+    .shadi > img {
+        width: 350px;
+        margin-top: 7px;
+    }
+}
+@media only screen and (max-width: 991px) {
+    .world {
+        display: none;
+    }
+    .responsive-change {
+        width: 20%;
+        float: left;
+    }
+    .shadi > img {
+        width: 468px;
+        margin-top: 0px;
+    }
+}
+@media only screen and (min-width: 769px) {
+    .and-more {
+        display: none;
+    }
+}
+@media only screen and (max-width: 768px) 
+{
+    
+    .navbar-toggle-l 
+    {
+        display:block;
+    }
+    .side-nav-slide-left 
+    {
+        display:block;
+    }
+    .ui-sub-heading h3 
+    {
+        text-align:center;
+    }
+    
+.ui-home-icon img {
+	float: none;
+}
+.ui-home-icon {
+	height: 96px;
+}
+.ui-ad-asmarriage 
+{
+    
+    margin-top:20px;
+    width: 99%;
+	margin-left: 3px;
+	border-bottom:1px solid #ddd;
+	padding-bottom:20px;
+}
+.facebook-api 
+{
+   
+    margin-top:0px;
+    width: 99%;
+	margin-left: 3px;
+}
+.facebook-api .frame-fb
+{
+    text-align:center;
+    margin-left:30%;
+}
+.ui-ad-asmarriage a 
+{
+    margin-left:30%;
+}
+
+.astrologers {
+	width: 99%;
+	margin-left: 3px;
+}
+
+.astrologers .heading h2 {
+	font-size: 25px;
+}
+.right-astro h6 {
+	margin-bottom:18px;
+}
+
+    .leftcontainer .ui-qustn-box textarea {
+	width: 95%;
+}
+    #sideLeft 
+    {
+        display:none;
+    }
+    #notimsg {
+        padding-top: 10px;
+    }
+    .divClass {
+        display: none;
+    }
+    
+    #content {
+        padding: 0;
+    }
+    .iconBar {
+        width: 25%;
+        float: left;
+        border-right: solid 1px #ffe082;
+        height: 116px;
+        border-bottom: solid 1px #ffe082;
+        overflow: hidden;
+        box-sizing: border-box;
+    }
+    #icon1,
+    #icon2,
+    #icon3,
+    #icon4,
+    #icon5,
+    #icon6,
+    #icon7,
+    #icon8,
+    #icon9,
+    #icon10,
+    #icon11 {
+        width: 100%;
+        margin: 0px;
+        float: none;
+        text-align: center;
+        padding-bottom: 10px;
+        padding-top: 10px;
+    }
+    #content1,
+    #content2,
+    #content3,
+    #content4,
+    #content5,
+    #content6,
+    #content7,
+    #content8,
+    #content9,
+    #content10,
+    #content11 {
+        width: 100%;
+        margin: 0px;
+        float: none;
+        text-align: center;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        overflow:hidden;
+    }
+    .iconBar #Div1,
+    .iconBar #Div3,
+    .iconBar #Div5,
+    .iconBar #Div7 {
+        width: 100%;
+        margin: 0px;
+        float: none;
+        text-align: center;
+        padding-bottom: 10px;
+        padding-top: 10px;
+    }
+    .iconBar #Div2,
+    .iconBar #Div4,
+    .iconBar #Div6,
+    .iconBar #Div8 {
+        width: 100%;
+        margin: 0px;
+        float: none;
+        text-align: center;
+        padding-bottom: 10px;
+        padding-top: 10px;
+    }
+    .ui-grid-b >:nth-child(n) {
+        width: 100%;
+    }
+    #toolbar {
+        background: #FFC107;
+        height: 50px;
+        box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.3);
+    }
+    .ui-toolbar {
+        background-color: #fff;
+        display: inline-block;
+        margin-bottom: -5px;
+        margin-top: 50px;
+        width: 100%;
+    }
+    #headbanner {
+        display: none;
+    }
+    .responsive-Style {
+        display: block;
+        margin-top: 8px;
+    }
+    .toolbar-none {
+        display: block;
+    }
+    #menu ul li > a:focus {
+        text-decoration: none;
+    }
+    .cross .change-icon {
+        display: none;
+        text-decoration: none;
+        transition: all 0.4s ease-in-out 0s;
+    }
+    #toggle-icon:focus,
+    #toggle-icon:hover {
+        text-decoration: none;
+    }
+    #toggle-icon.cross .change-cross {
+        display: block !important;
+        transition: all 0.4s ease-in-out 0s;
+    }
+    #toggle-icon .change-cross {
+        display: none;
+        transition: all 0.4s ease-in-out 0s;
+    }
+    #menu {
+        display: block;
+    }
+    #toggle-icon {
+        display: block;
+    }
+    #menu {
+	background-color: #f5f5f5;
+	height: 100%;
+	left: -300px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	position: fixed;
+	top: 0;
+	transition: all 0.3s ease 0s;
+	width: 300px;
+	box-shadow: 2px 0px 5px 0px rgba(0,0,0,0.2);
+}
+    #menu ul {
+        text-align: left;
+        background-color: transparent;
+    }
+    #menu ul li a:hover {
+        text-decoration: none;
+    }
+    #menu ul li {
+        display: block;
+        float: none;
+    }
+    #menu ul li a {
+        display: block;
+        float: none;
+    }
+    #menu ul li a > i {
+        float: right;
+    }
+    #menu ul li ul {
+        display: none;
+        position: static;
+        width: 100%;
+        background-color: #fff;
+    }
+    #menu ul li:hover > ul {
+        display: none;
+    }
+    #menu ul li:hover > a > i {
+        transform: rotateZ(0);
+    }
+    #menu ul li.open > a {
+        background-color: #f5f5f5;
+    }
+    #menu ul li.open > a > i {
+        transform: rotateZ(90deg);
+    }
+    #menu ul li.open > ul {
+        display: block;
+    }
+    html.open-menu {
+        overflow: hidden;
+    }
+    html.open-menu div#overlay {
+        visibility: visible;
+        opacity: 1;
+        width: calc(-150%);
+        left: 250px;
+    }
+    html.open-menu #toggle-icon,
+    html.open-menu main#content {
+        left: 300px;
+    }
+    html.open-menu #menu {
+        z-index: 3;
+        left: 0;
+    }
+    .ui-toolbar .responsive-none {
+        display: none;
+    }
+    .clickOpen {
+        color: #000;
+        float: left;
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 0;
+        margin-top: 0;
+        padding: 6px 3px 4px 8px;
+        position: relative;
+        right: 0;
+    }
+    .clickOpen i {
+        line-height: 0;
+        padding: 0 4px;
+        position: relative;
+        top: 7px;
+    }
+    .and-more {
+        cursor: pointer;
+        display: block;
+        position: relative;
+        margin-right: 10px;
+        float: right;
+    }
+    .and-more > ul {
+        background-color: #f5f5f5;
+        top: 100%;
+        right: 0;
+        list-style: outside none none;
+        padding: 0;
+        position: absolute;
+        z-index: 2;
+        display: none;
+        margin-top:0;
+        width:150px;
+    }
+ .and-more a {
+	border-bottom: 1px solid #999;
+	display: block;
+	font-size: 15px;
+	padding: 10px;
+	color: #333;
+	font-weight: normal;
+}
+}

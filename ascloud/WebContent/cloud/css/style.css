@@ -1,0 +1,211 @@
+.ui-box-border {
+	border: 1px solid #f96d06;
+	width: 98%;
+	margin: 5px;
+	border-radius: 5px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
+#tiles {
+	list-style-type: none;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	-webkit-background-clip: padding;
+	width: 98%;
+	margin: 5px;
+	padding: 0px;
+	border: solid 0px #862703;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	background-color: #fff;
+	box-shadow: 0px 0px 3px #666;
+	-webkit-box-shadow: 0px 0px 3px #666;
+	-moz-box-shadow: 0px 0px 3px #666;
+}
+
+#tiles li {
+	width: 100%;
+	border-bottom: 1px solid #ddd;
+	border-left: 0px solid gold;
+	border-right: 0px solid gold;
+	box-shadow: 0px 0px 0px #000;
+	text-align: left;
+	color: #fff;
+	height: 25px;
+	line-height: 25px;
+	overflow: hidden;
+	font-size: 12px;
+}
+
+#tiles ul.heading {
+	width: 94%;
+	text-align: left;
+	color: #fff;
+	height: 35px;
+	background: url(../images/topbg.gif) repeat-x;
+}
+
+#tiles li a {
+	color: #333;
+	text-align: left;
+}
+
+#tiles li:last-child {
+	border-radius: 0px 0px 5px 5px;
+	-moz-border-radius: 0px 0px 5px 5px;
+	-webkit-border-radius: 0px 0px 5px 5px;
+	background-position: bottom right, bottom left;
+	background-repeat: no-repeat;
+	height: 25px;
+	border-bottom: 0px solid #ddd;
+}
+
+#tiles li:first-child {
+	border-radius: 5px 5px 0px 0px;
+	-moz-border-radius: 5px 5px 0px 0px;
+	-webkit-border-radius: 5px 5px 0px 0px;
+	height: 34px;
+	line-height: 34px;
+	background: -moz-linear-gradient(#ff9652, #ff5918);
+	background: -webkit-gradient(linear from(#ff5918), to(#ff9652));
+	background: -webkit-linear-gradient(#ff9652, #ff5918);
+	background: -o-linear-gradient(#ff9652, #ff5918);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff9652',
+		endColorstr='#ff5918');
+	color: #333;
+	font-size: 18px;
+	font-weight: normal;
+	text-shadow: 0px 1px 1px #ccc;
+	text-align: center;
+}
+
+#tiles li a:hover {
+	color: red;
+}
+
+#tiles li:hover {
+	color: #333;
+	background-color: #ffffef;
+}
+
+#tiles li img {
+	display: block;
+	text-align: left;
+	float: left;
+	padding-top: 5px;
+	padding-left: 5px;
+	margin: 0;
+	height: 15px;
+	padding-right: 10px;
+	border-right: 0px solid #ff6900;
+	border: 0;
+}
+
+#main {
+	padding: 0px 0 15px 0;
+}
+
+.tbl-heading {
+	border-radius: 4px 4px 0px 0px;
+	-moz-border-radius: 4px 4px 0px 0px;
+	-webkit-border-radius: 4px 4px 0px 0px;
+	height: 34px;
+	line-height: 34px;
+	background: -moz-linear-gradient(#ff9652, #ff5918);
+	background: -webkit-gradient(linear from(#ff5918), to(#ff9652));
+	background: -webkit-linear-gradient(#ff9652, #ff5918);
+	background: -o-linear-gradient(#ff9652, #ff5918);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff9652',
+		endColorstr='#ff5918');
+	color: #333;
+	font-size: 18px;
+	font-weight: normal;
+	text-shadow: 0px 1px 1px #ccc;
+	text-align: center;
+	border-bottom: 1px solid #ddd;
+}
+
+.table-report img {
+	display: block;
+	text-align: left;
+	float: left;
+	padding-top: 5px;
+	padding-left: 5px;
+	margin: 0;
+	height: 15px;
+	padding-right: 10px;
+	border-right: 0px solid #ff6900;
+	border: 0;
+}
+
+.table-report td {
+	background-color: #fff !important;
+}
+
+.table-report th {
+	background-color: #f7f7f7 !important;
+}
+
+.table-report {
+	border-collapse: collapse !important;
+}
+
+.table-bordered-report th, .table-bordered-report td {
+	border: 1px solid #ddd !important;
+}
+
+.table-report {
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+.table-report th h3 {
+	font-size: 18px;
+	padding: 0;
+	margin: 0;
+}
+
+.table-report thead>tr>th, .table-report tbody>tr>th, .table-report tfoot>tr>th,
+	.table-report thead>tr>td, .table-report tbody>tr>td, .table-report tfoot>tr>td
+	{
+	padding: 3px 8px;
+	line-height: 1.428571429;
+	vertical-align: top;
+	border-top: 1px solid #dddddd;
+}
+
+.table-report thead>tr>th {
+	vertical-align: bottom;
+	border-bottom: 2px solid #dddddd;
+}
+
+.table-report thead:first-child tr:first-child td {
+	border-top: 0;
+}
+
+.table-report tbody+tbody {
+	border-top: 2px solid #dddddd;
+}
+
+.table-report .table-report {
+	background-color: #ffffff;
+}
+
+.table-bordered-report {
+	border: 1px solid #dddddd;
+}
+
+.table-bordered-report>thead>tr>th, .table-bordered-report>tbody>tr>th,
+	.table-bordered-report>tfoot>tr>th, .table-bordered-report>thead>tr>td,
+	.table-bordered-report>tbody>tr>td, .table-bordered-report>tfoot>tr>td
+	{
+	border: 1px solid #dddddd;
+}
+
+.table-bordered-report>thead>tr>th, .table-bordered-report>thead>tr>td {
+	border-bottom-width: 2px;
+}

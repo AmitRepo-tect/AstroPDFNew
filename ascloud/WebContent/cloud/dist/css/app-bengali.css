@@ -1,0 +1,10 @@
+
+.calculaton .hgt-box {min-height:170px;}
+@media screen and (max-width: 1400px) {
+	.calculaton .hgt-box {min-height:200px;}
+	}
+
+@media screen and (max-width: 768px) {
+
+.calculaton .hgt-box {min-height:120px;}
+}

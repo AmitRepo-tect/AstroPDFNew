@@ -1,0 +1,15 @@
+
+.calculaton .hgt-box {min-height:170px;}
+#ui-table thead tr th, #ui-table tbody tr td {
+    font-size: 12px;
+    word-break: break-all;
+    text-align: center;
+}
+@media screen and (max-width: 1400px) {
+	.calculaton .hgt-box {min-height:200px;}
+	}
+
+@media screen and (max-width: 768px) {
+
+.calculaton .hgt-box {min-height:120px;}
+}

@@ -1,0 +1,236 @@
+.matching_text {
+	text-decoration: none;
+	font-weight: bold;
+	color: #fff;
+}
+
+.tiles ul {
+	list-style-type: none;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.tiles li {
+	line-height: 20px;
+}
+
+.tiles li.arrow {
+	background: url(/cloud/images/arrow.png) no-repeat;
+	padding-left: 10px;
+	margin-left: 5px;
+}
+
+.girl-box {
+	/*background: #FAECD1 url(images/girl-icon.png) no-repeat left;*/
+	background: #FAECD1;
+	border-radius: 0px 0px 0px 5px;
+	text-align: center;
+}
+
+.boy-box {
+	/*background: #FAECD1 url(images/boy-icon.png) no-repeat;*/
+	background: #FAECD1;
+	border-radius: 0px 0px 0px 5px;
+	text-align: center;
+}
+
+a.matching_text {
+	font-size: 14px;
+}
+
+.goback {
+	font-size: 12px;
+	font-weight: bold;
+	text-align: left;
+	border: 1px solid transparent;
+}
+
+.goback:hover {
+	background: #FAECD1;
+	font-size: 12px;
+	font-weight: bold;
+	text-align: left;
+	border: 1px solid #990000;
+}
+
+.goback-text {
+	
+}
+
+.goback-text {
+	font-size: 13px;
+}
+
+.goPDF {
+	background: url(/cloud/images/download-matching-pdf.png) no-repeat;
+	height: 40px;
+	font-size: 12px;
+	font-weight: bold;
+	text-align: left;
+	border: 1px solid transparent;
+}
+
+.goPDF:hover {
+	background: #FAECD1 url(/cloud/images/download-matching-pdf.png)
+		no-repeat;
+	font-size: 12px;
+	font-weight: bold;
+	text-align: left;
+	border: 1px solid #990000;
+}
+
+.goPDF-text {
+	padding-left: 40px;
+}
+
+a.goPDF-text {
+	font-size: 14px;
+}
+
+.pull-left {
+	float: left;
+}
+
+/* grid configurations. */
+.ui-grid-a, .ui-grid-b {
+	overflow: hidden;
+}
+
+.ui-block-a, .ui-block-b {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	float: left;
+	min-height: 1px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+}
+/* grid a: 50/50 */
+.ui-grid-a .ui-block-a, .ui-grid-a .ui-block-b {
+	width: 49.95%;
+}
+
+.ui-grid-a>:nth-child(n) {
+	width: 50%;
+	margin-right: -.5px;
+}
+
+.ui-grid-a .ui-block-a {
+	clear: left;
+}
+/* grid b: 33/33/33 */
+.ui-grid-b .ui-block-a, .ui-grid-b .ui-block-b, .ui-grid-b .ui-block-c {
+	width: 33.25%;
+}
+
+.ui-grid-b>:nth-child(n) {
+	width: 33.333%;
+	margin-right: -.5px;
+	border: 0;
+}
+
+.ui-grid-b .ui-block-a {
+	clear: left;
+}
+
+.ui-wrapper {
+	width: 96%;
+	margin: 0 auto;
+}
+
+.ui-container {
+	border: 0px solid #ddd;
+	border-radius: 0 0 5px 5px;
+	-moz-border-radius: 0 0 5px 5px;
+	-webkit-border-radius: 0 0 5px 5px;
+	box-shadow: 0px 1px 3px #000;
+	-moz-box-shadow: 0px 1px 3px #000;
+	-webkit-box-shadow: 0px 1px 3px #000;
+	background: #fff;
+	font-family: timesnewroman;
+	font-size: 14px;
+	line-height: 18px;
+	color: Black;
+}
+
+.ui-heading {
+	border-bottom: 0 solid #ddd;
+	line-height: 30px;
+	padding-left: 5px;
+	font-size: 14px;
+	font-weight: bold;
+	color: #fff;
+	background: #ff6921;
+	border-radius: 5px 5px 0 0;
+	-moz-border-radius: 5px 5px 0 0;
+	-webkit-border-radius: 5px 5px 0 0;
+	box-shadow: 0px 1px 3px #000;
+	-moz-box-shadow: 0px 1px 3px #000;
+	-webkit-box-shadow: 0px 1px 3px #000;
+}
+
+.ui-heading a:hover {
+	text-decoration: underline;
+	text-align: left;
+	color: #fff;
+}
+
+.ui-heading a {
+	color: #fff;
+	text-align: left;
+}
+
+.ui-heading-h2 {
+	border-bottom: 1px solid #990000;
+	border-top: 1px solid #990000;
+	line-height: 40px;
+	text-align: center;
+	font-size: 20px;
+	font-weight: bold;
+	color: #990000;
+	background: #FAECD1;
+}
+
+.hoverme a img {
+	border: 1px solid transparent;
+	padding: 2px;
+	margin-top: 2px;
+}
+
+.hoverme a img:hover {
+	background: #FAECD1;
+	border: 1px solid #990000;
+	padding: 2px;
+	margin-top: 2px;
+}
+
+.tooltip {
+	background: #be2204;
+	position: absolute;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	border: 1px solid #fff;
+	color: #fff;
+	padding: 10px 12px;
+	-moz-box-shadow: 0 0 10px #000;
+	-webkit-box-shadow: 0 0 3px #000;
+}
+
+.tooltip:before {
+	content: "";
+	position: absolute;
+	width: 0;
+	height: 0;
+	border-right: 15px solid transparent;
+	border-top: 20px solid #be2204;
+	border-left: 15px solid transparent;
+	margin: 20px 0 0 -10px;
+}
+
+.padding {
+	padding: 2px;
+}

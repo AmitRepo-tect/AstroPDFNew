@@ -1,0 +1,520 @@
+﻿body{
+    background-attachment: fixed;
+    background-color: #ffd180;
+    background-image: url("/offer/images/body-bg.png");
+    color: #000;
+    font-family: 'Bree Serif', serif;
+    }
+
+
+[class^=col-xs].no-padding-l{ padding-left:5px;}
+[class^=col-xs].no-padding-r{padding-right:5px;}
+
+[class^=col-sm]{ padding-left:5px; padding-right:5px;}
+
+.app-toolbar{box-shadow: 0 1px 2px 0 rgba(0,0,0,0.16),0 1px 5px 0 rgba(0,0,0,0.12); background:#FFC107; padding:5px; width:100%;}
+.app-toolbar img{width:125px; height:auto;}
+
+.listview{margin:0; padding:0; padding-left:24px;}
+.listview li{ font-size:18px; line-height:32px;}
+.content{ font-size:18px;}
+.text-grey{color:#444; font-size:18px;}
+
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+.modal-header .modal-title{ font:24px; color:#614900;}
+.modal-header > button > i{color:#614900;}
+.modal-header {
+    padding:6px 15px;
+    border-bottom:1px solid #FF8F00;
+    background-color: #FFC107;
+   -webkit-border-top-left-radius: 5px;
+   -webkit-border-top-right-radius: 5px;
+   -moz-border-radius-topleft: 5px;
+   -moz-border-radius-topright: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+ }
+ 
+ .close {   
+    color: #614900;
+    opacity: 1;    
+}
+ .close i.material-icons {  
+    font-size:24px;
+    margin-top: 6px;
+    margin-right: -8px;
+}
+.margin-b{ margin-bottom:10px;}
+.margin-t{ margin-top:10px;}
+
+.border-t{border-top:1px solid #FFE082}
+
+.btn-lg{ font-size:36px;}
+
+.full-conatin-bar p.text-17 {
+    font-size: 17px;
+}
+
+.desktop{ display:block;}
+.mobile{ display:none;}
+
+.shop-cart > i{color:#614900}
+.btn-white{ background:#fff; border-radius:3px;box-shadow: 0 1px 2px 0 rgba(0,0,0,0.16),0 1px 5px 0 rgba(0,0,0,0.12);}
+
+@media (max-width:768px){
+.mobile{ display:block;}
+.desktop{ display:none;}
+.btn-lg{ font-size:24px;}
+}
+
+.full-width{
+    width:100%;    
+    }
+.logo-bar{
+    width:100%;
+    background:rgba(0,0,0,0.3);
+    padding:5px;
+    }
+.personal-horoscope-bar 
+{ 
+ margin-top:100px;
+}
+.personal-horoscope-bar img 
+{
+    position:relative;
+    margin-top:15px;
+}
+.heading-bar > h2::after {
+  background: #ff7000 none repeat scroll 0 0;
+  bottom: -2px;
+  content: "";
+  height: 2px;
+  left: 0;
+  position: absolute;
+  width: 200px;
+}
+.heading-bar > h2 {
+  border-bottom: 2px solid #ddd;
+  font-size: 25px;
+  padding-bottom: 12px;
+  padding-top: 9px;
+  position: relative;
+  margin-bottom:0;
+}
+.opacity-bg {
+  background: #fff none repeat scroll 0 0;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.16), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  padding-left:15px;
+  padding-right:15px;
+}
+
+.font-style{
+  
+    font-size:18px;
+}
+.left-side 
+{
+    padding-left:10px;
+}
+.right-side > .mrg-btm > h2 {
+  color: #ff6f00;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+.right-side > .mrg-btm > p {
+  font-size:16px;
+}
+ .mrg-btm 
+ {
+     margin-bottom:25px;
+ }
+
+.right-form {
+  padding-bottom: 20px;
+  padding-right: 10px;
+  padding-top: 20px;
+}
+
+.right-form .padd0 
+{
+    padding-top:0;
+}
+.clr1 {
+  padding-right: 20px;
+}
+.btn-bar 
+{
+    text-align:center;
+}
+.btn-orange {
+  background-color: #ff6f00;
+  border-radius: 2px;
+  border-width: 0;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.16), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  color: #fff;
+  display: block;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease 0s;
+}
+.btn-orange span {
+  display: block;
+  font-size: 19px;
+  padding: 8px;
+  text-align: center;
+}
+.btn-orange.orange:hover, .btn-orange.orange:focus {
+  background-color: #d35400;
+  color: #fff;
+  text-decoration: none;
+}
+
+
+.btn-buy-1 {
+  background-color: #ff6f00;
+  border-radius: 2px;
+  border-width: 0;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.16), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  color: #fff;
+  display: block;
+  overflow: hidden;
+  padding: 10px 16px;
+  position: relative;
+  text-transform: uppercase; 
+  transition: background-color 0.3s ease 0s;
+}
+.btn-buy-1 {  
+  font-size: 16px; 
+  text-align: center;
+}
+.btn-buy-1.orange:hover, .btn-buy-1.orange:focus {
+  background-color: #d35400;
+  color: #fff;
+  text-decoration: none;
+}
+
+
+.border-right {
+  border-left: 1px solid #ddd;
+}
+
+.horoscope-online-result 
+{
+    background-color:#fff;
+    box-shadow:0 1px 2px 0 rgba(0, 0, 0, 0.16), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    margin-top:50px;
+}
+
+.content-bar h2 {
+	position: relative;
+	display: inline-block;
+	border-bottom: 3px solid #ddd;
+	padding-bottom: 15px;
+	margin-bottom: 0;
+}
+.content-bar h2::before {
+	content: '';
+	border-top: 3px solid #ff7000;
+	font-size: inherit;
+	position: absolute;
+	width: 30%;
+	bottom: -3px;
+	left: 35%;
+}
+
+.content-bar p
+{
+    padding-top:30px;
+    font-size:18px;
+}
+.main-contain h2 
+{
+    color:#ff7000;
+    position: relative;
+	display: inline-block;
+	border-bottom: 3px solid #ddd;
+	padding-bottom: 15px;
+	margin-bottom: 0;
+	margin-bottom:20px;
+}
+.main-contain 
+{
+    margin-bottom:30px;
+}
+.main-contain h2::before {
+	content: '';
+	border-top: 3px solid #ff7000;
+	font-size: inherit;
+	position: absolute;
+	width: 30%;
+	bottom: -3px;
+	left: 35%;
+}
+.img-center img {
+	box-shadow: 0px -1px 6px 4px rgba(0, 0, 0, 0.16);
+	border-radius: 180px;
+	height: 150px;
+	width: 150px;
+	text-align: center;
+	vertical-align: middle;
+	margin-top: 18px;
+	padding-top: 0;
+	padding: 6px 5px 6px 6px;
+}
+.main-contain .table-responsive 
+{
+    margin-top:30px;
+    padding-bottom:15px;
+}
+.main-contain .table > tbody > tr > td 
+{
+    border-top:none;
+    font-size:18px;
+    padding-top:4px;
+    padding-bottom:4px;
+}
+
+
+.full-conatin-bar > .heading-sec h2 {
+	position: relative;
+	display: inline-block;
+	border-bottom: 3px solid #ddd;
+	padding-bottom: 15px;
+	margin-bottom: 0;
+	text-align:center;
+	margin-bottom:20px;
+	margin-top:50px;
+}
+
+.full-conatin-bar > .heading-sec > h2::before {
+	content: '';
+	border-top: 3px solid #ff7000;
+	font-size: inherit;
+	position: absolute;
+	width: 30%;
+	bottom: -3px;
+	left: 35%;
+}
+.full-conatin-bar .inner-sec p 
+{
+    font-size:18px;
+    text-align:justify;
+}
+.inner-sec 
+{
+    margin-top:30px;
+    margin-bottom:30px;
+}
+.border-btm 
+{
+ position:relative;   
+}
+.border-btm:after 
+{
+    content: '';
+	border-top: 2px solid #ff7000;
+	font-size: inherit;
+	position: absolute;
+	width: 480px;
+	bottom: 0px;
+	top:20px;
+	left: 30px;
+}
+.border-btm:before 
+{
+    content: '';
+	border-top: 2px solid #ff7000;
+	font-size: inherit;
+	position: absolute;
+	width: 480px;
+	bottom: 0px;
+	top:20px;
+	right: 30px;
+}
+.border-btm span {
+	position: absolute;
+	left: 47%;
+	top: 3px;
+}
+.noscrol 
+{
+    overflow:hidden;
+}
+.horoscope-online-result 
+{
+   
+    overflow-y:auto;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+}
+
+.inner-sec ol
+{
+    padding-left:20px;
+    font-size:18px;
+}
+.full-conatin-bar p 
+{
+    font-size:18px;
+}
+.full-conatin-bar .brt h2:before 
+{
+    left:180px;
+}
+
+.full-conatin-bar .brtt h2:before 
+{
+    left:240px;
+}
+
+.full-conatin-bar .brttt h2:before 
+{
+    left:150px;
+}
+.full-conatin-bar .brtttt h2:before 
+{
+    left:190px;
+}
+
+.container{ padding-left:0px; padding-right:0px;}
+
+p.text-sm{ font-size:14px;}
+.full-conatin-bar .inner-sec p.text-sm{ font-size:14px;}
+.full-conatin-bar .inner-sec p.text-center{ text-align:center;}
+
+.full-conatin-bar .inner-sec li{ font-size:18px;}
+
+.ui-canvas{width:100%; height:100%;}
+
+.upgrade-section{ background:rgba(255,248,225,0.5); border:1px solid #FFE082; padding:10px; font-size:16px;}
+.upgrade-section a{ position:relative; color:#ff0000; text-decoration:underline; font-size:18px; font-style:italic;}
+
+a.upgrade-link{color: #ff0000; text-decoration: underline;font-size: 18px;font-style: italic;}
+
+
+.upgrade-section i.str1{ font-size:22px;}
+.upgrade-section i.str2{ font-size:20px;letter-spacing: -10px; opacity:0.6;}
+.upgrade-section i.str3{ font-size:18px;letter-spacing: -10px; opacity:0.4;}
+
+.upgrade-section i.str4{ font-size:18px;letter-spacing: -10px; opacity:0.4;}
+.upgrade-section i.str5{ font-size:20px;letter-spacing: -10px; opacity:0.6;}
+.upgrade-section i.str6{ font-size:22px;letter-spacing: -10px;}
+
+
+.ad-section{ background:rgba(255,248,225,0.5); border-top:1px solid #FFE082; border-bottom:1px solid #FFE082; padding:16px; font-size:16px;}
+.ad-section .btn-buy-1{ max-width:300px; text-align:center;}
+.div-center{ margin-left:auto; margin-right:auto; width:100%;}
+
+.text-highlight{color: #c00; text-transform: uppercase; font-size: 20px; font-weight: 700;}
+
+.padding-all{ padding:10px;}
+.padding-t{ padding-top:10px;}
+.padding-lr{ padding-left:10px; padding-right:10px;}
+/*.upgrade-section a:after 
+{
+    content: '';
+	border-top: 2px solid #ff0000;
+	font-size: inherit;
+	position: absolute;
+	width: 50%;
+	bottom: 0px;
+	top:20px;
+	left: 180px;
+}
+.upgrade-section a:before 
+{
+    content: '';
+	border-top: 2px solid #ff0000;
+	font-size: inherit;
+	position: absolute;
+	width: 50%;
+	bottom: 0px;
+	top:20px;
+	right: 180px;
+}*/
+
+.upgrade-section a i {
+ vertical-align:middle;
+}
+
+
+@media only screen and (max-width: 500px) {
+.right-form{ padding:16px; border:1px solid #ddd; margin-bottom:16px;}
+ .heading-bar > h2 {
+  font-size: 18px;
+  padding-top: 16px;
+  text-align:left;
+}
+
+.upgrade-section a:after{   
+	width: 25%;
+	}
+.upgrade-section a:before{  
+	width: 25%;
+	}
+
+
+.border-right {
+  border-left: none;
+}
+.personal-horoscope-bar {
+  margin-top: 30px;
+}
+.manage-btm 
+{
+    margin-bottom:25px;
+}
+.btm-top 
+{
+    border-top:3px solid #ddd;
+}
+.md-btn1 span {
+  font-size: 17px;
+}
+.offer1 span {
+  font-size: 16px;
+  line-height: 23px;
+  margin-top: 16px;
+}
+
+.border-btm::after {
+	width: 120px;
+	left: 0px;
+}
+.border-btm::before {
+	width: 120px;
+	right: 0px;
+}
+.border-btm span {
+	left: 40%;
+}
+
+
+}
+.margin-24-l {
+	 margin-left:24px;
+}
+.margin-48-l {
+	 margin-left:48px;
+}
+.border-btm span.kalash{
+    background:url(/offer/images/kalash.png);
+    background-repeat:no-repeat;
+    width:20px;
+    height:20px;
+    background-size:cover;
+    display:inline-block;
+    }
+    
+
+    
+   
+   

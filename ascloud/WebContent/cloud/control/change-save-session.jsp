@@ -1,0 +1,3 @@
+<%
+request.getSession().setAttribute("IsSaved", "");
+%>

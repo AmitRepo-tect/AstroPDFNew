@@ -1,0 +1,54 @@
+html {font-size:14px !important;}
+body {font-size:14px !important;}
+#header .default-bar li a {margin-left:5px; margin-right:5px; font-size:12px;}
+.class-main .default-class img {width:60px;}
+.class-main .default-class h6 {font-size:14px; text-align:right;}
+.resnv {float:left; width:100%;}
+.tamil-res > a {float:left; width:15%; margin-right:2%;}
+.tamil-case {width:83%;}
+#left-sidebar-nav .side-nav li>a {font-size:14px;}
+.ui-kp li {width:100%; height:auto;}
+.ui-kp li a {padding:8px 12px;}
+.RecommendationHeading1 {
+    width: 40%;
+}
+.formate-table table tr th, .formate-table table tr td {
+    padding: 8px 4px;
+    font-size: 13px;
+    
+}
+.formating table tr th, .formating table tr td {word-break: break-all; font-size: 12px;}
+.flow-text {font-size:18px;}
+#ui-table thead tr th, #ui-table tbody tr td {
+    font-size: 12px;
+    word-break: break-all;
+    text-align: center;
+}
+.ui-forms-setting1 .pg-form label {
+	font-size: 9px;
+	font-weight: bold;
+}
+@media screen and (max-width: 768px) {
+	.user-define .full-width {min-height:110px;} .user-define .card .card-title {
+	font-size: 13px !important;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	word-wrap: break-word;
+	white-space: nowrap;
+	text-align: center;
+}
+.pg-buy-services .model-header h4 {
+	font-size: 16px;
+}
+ .user-define h6 {font-size:13px!important;} 
+	.tamil-css{left:15px !important;} .tamil-css li>a {font-size:13px!important;} .mb-dropdown li>a {font-size:13px!important;}
+	.tamil-res > a {width:100%; float:none; margin-right:0px;}
+	.tamil-case {width:100%;}
+	.class-main .default-class h6 {font-size:14px; text-align:center;}
+	.default-class .user-define .resnv {height:115px;}
+	.calculaton .hgt-box {height:170px;}
+	
+}
+@media screen and (max-width: 400px) {
+	.default-class .user-define .resnv {height:130px;}
+	}

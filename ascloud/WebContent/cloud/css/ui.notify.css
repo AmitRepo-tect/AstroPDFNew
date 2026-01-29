@@ -1,0 +1,149 @@
+.ui-notify {
+	width: 350px;
+	position: fixed;
+	top: 10px;
+	right: 10px;
+}
+
+.ui-notify-message h1 {
+	font-size: 14px;
+	margin: 0;
+	padding: 0
+}
+
+.ui-notify-message p {
+	margin: 3px 0;
+	padding: 0;
+	line-height: 18px
+}
+
+.ui-notify-message:last-child {
+	margin-bottom: 0
+}
+
+.ui-notify-message-style {
+	background: #000;
+	background: rgba(0, 0, 0, 0.8);
+	-moz-box-shadow: 0 0 6px #000;
+	-webkit-box-shadow: 0 0 6px #000;
+	box-shadow: 0 0 6px #000;
+}
+
+.ui-notify-message-style h1 {
+	color: #fff;
+	font-weight: bold
+}
+
+.ui-notify-message-style p {
+	color: #fff
+}
+
+.ui-notify-close {
+	color: #fff;
+	text-decoration: underline
+}
+
+.ui-notify-click {
+	cursor: pointer
+}
+
+.ui-notify-cross {
+	margin-top: -4px;
+	float: right;
+	cursor: pointer;
+	text-decoration: none;
+	font-size: 12px;
+	font-weight: bold;
+	text-shadow: 0 1px 1px #fff;
+	padding: 2px
+}
+
+.ui-notify-cross:hover {
+	color: #ffffab
+}
+
+.ui-notify-cross:active {
+	position: relative;
+	top: 1px
+}
+
+.ui-notify-message {
+	position: relative;
+	padding: 15px;
+	margin: 2.5em 0 5em;
+	color: #000;
+	background: #424242;
+	/* default background for browsers without gradient support */
+	/* css3 */
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#828284),
+		to(#424242));
+	background: -moz-linear-gradient(#828284, #424242);
+	background: -o-linear-gradient(#828284, #424242);
+	background: linear-gradient(#828284, #424242);
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	width: 600px;
+	height: 80px;
+	border: 1px solid #fff;
+}
+
+/* Variant : for top positioned triangle
+------------------------------------------ */
+.ui-notify-message.top {
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#424242),
+		to(#828284));
+	background: -moz-linear-gradient(#424242, #828284);
+	background: -o-linear-gradient(#424242, #828284);
+	background: linear-gradient(#424242, #828284);
+}
+
+.ui-notify-message:after {
+	content: "";
+	position: absolute;
+	bottom: -15px; /* value = - border-top-width - border-bottom-width */
+	left: 50px; /* controls horizontal position */
+	border-width: 15px 15px 0;
+	/* vary these values to change the angle of the vertex */
+	border-style: solid;
+	border-color: #f3961c transparent;
+	/* reduce the damage in FF3.0 */
+	display: block;
+	width: 0;
+}
+
+.ui-notify-message:before {
+	content: "";
+	position: absolute;
+	bottom: -16px; /* value = - border-top-width - border-bottom-width */
+	left: 50px; /* controls horizontal position */
+	border-width: 15px 15px 0;
+	/* vary these values to change the angle of the vertex */
+	border-style: solid;
+	border-color: #fff transparent;
+	/* reduce the damage in FF3.0 */
+	display: block;
+	width: 0;
+}
+
+/* Variant : top
+------------------------------------------ */
+.ui-notify-message.top:after {
+	top: -15px; /* value = - border-top-width - border-bottom-width */
+	right: 580px; /* controls horizontal position */
+	bottom: auto;
+	left: auto;
+	border-width: 0 15px 15px;
+	/* vary these values to change the angle of the vertex */
+	border-color: #424242 transparent;
+}
+
+.ui-notify-message.top:before {
+	top: -16px; /* value = - border-top-width - border-bottom-width */
+	right: 580px; /* controls horizontal position */
+	bottom: auto;
+	left: auto;
+	border-width: 0 15px 15px;
+	/* vary these values to change the angle of the vertex */
+	border-color: #fff transparent;
+}
